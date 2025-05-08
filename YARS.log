@@ -1,0 +1,1125 @@
+2025-05-07 23:29:13,430 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 50, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-07 23:29:15,196 - INFO - Subreddit/user posts request successful
+2025-05-07 23:29:16,378 - INFO - Sleeping for random time
+2025-05-07 23:29:17,669 - INFO - Subreddit/user posts request successful
+2025-05-07 23:29:18,814 - INFO - Sleeping for random time
+2025-05-07 23:29:28,819 - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /user/old_temperature4590/m/financebusiness/new.json?limit=50&after=t3_1kgzjie&raw_json=1&t=all
+2025-05-07 23:29:42,922 - WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /user/old_temperature4590/m/financebusiness/new.json?limit=50&after=t3_1kgzjie&raw_json=1&t=all
+2025-05-07 23:30:01,111 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /user/old_temperature4590/m/financebusiness/new.json?limit=50&after=t3_1kgzjie&raw_json=1&t=all
+2025-05-07 23:30:27,200 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /user/old_temperature4590/m/financebusiness/new.json?limit=50&after=t3_1kgzjie&raw_json=1&t=all
+2025-05-07 23:31:09,417 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /user/old_temperature4590/m/financebusiness/new.json?limit=50&after=t3_1kgzjie&raw_json=1&t=all
+2025-05-07 23:31:19,490 - INFO - Subreddit/user posts request unsuccessful: HTTPSConnectionPool(host='www.reddit.com', port=443): Max retries exceeded with url: /user/old_temperature4590/m/financebusiness/new.json?limit=50&after=t3_1kgzjie&raw_json=1&t=all (Caused by ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)"))
+2025-05-07 23:31:19,491 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-07 23:31:45,774 - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh3htx/best_ways_to_acquire_leads/.json
+2025-05-07 23:31:59,922 - WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh3htx/best_ways_to_acquire_leads/.json
+2025-05-07 23:32:18,054 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh3htx/best_ways_to_acquire_leads/.json
+2025-05-07 23:32:44,258 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh3htx/best_ways_to_acquire_leads/.json
+2025-05-07 23:33:26,361 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh3htx/best_ways_to_acquire_leads/.json
+2025-05-07 23:33:31,120 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh3htx/best_ways_to_acquire_leads/.json
+2025-05-07 23:33:31,121 - INFO - Extracting comments
+2025-05-07 23:33:31,121 - INFO - Successfully extracted comments
+2025-05-07 23:33:31,121 - INFO - Successfully scraped post: Best ways to acquire leads?
+2025-05-07 23:33:32,292 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh3etn/i_quit_my_engineering_job_due_to_anxiety_and/.json
+2025-05-07 23:33:32,292 - INFO - Extracting comments
+2025-05-07 23:33:32,292 - INFO - Successfully extracted comments
+2025-05-07 23:33:32,292 - INFO - Successfully scraped post: "I quit my engineering job due to anxiety and built a small business—how do I scale from here?"
+2025-05-07 23:33:33,226 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh2uvi/whats_one_thing_you_wish_you_knew_before_starting/.json
+2025-05-07 23:33:33,226 - INFO - Extracting comments
+2025-05-07 23:33:33,226 - INFO - Successfully extracted comments
+2025-05-07 23:33:33,226 - INFO - Successfully scraped post: What’s one thing you wish you knew before starting a POD store?
+2025-05-07 23:33:35,811 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh2ja4/lead_gen_is_such_a_money_pithow_are_you_guys/.json
+2025-05-07 23:33:35,825 - INFO - Extracting comments
+2025-05-07 23:33:35,825 - INFO - Extracting comments
+2025-05-07 23:33:35,825 - INFO - Successfully extracted comments
+2025-05-07 23:33:35,825 - INFO - Extracting comments
+2025-05-07 23:33:35,825 - INFO - Successfully extracted comments
+2025-05-07 23:33:35,826 - INFO - Successfully extracted comments
+2025-05-07 23:33:35,826 - INFO - Successfully scraped post: Lead gen is such a money pit...how are you guys handling it?
+2025-05-07 23:33:39,051 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh2ida/advertising_agencies/.json
+2025-05-07 23:33:39,051 - INFO - Extracting comments
+2025-05-07 23:33:39,051 - INFO - Successfully extracted comments
+2025-05-07 23:33:39,052 - INFO - Successfully scraped post: Advertising Agencies
+2025-05-07 23:33:42,742 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh2dp8/what_concerns_besides_price_would_you_have_as_a/.json
+2025-05-07 23:33:42,742 - INFO - Extracting comments
+2025-05-07 23:33:42,742 - INFO - Successfully extracted comments
+2025-05-07 23:33:42,742 - INFO - Successfully scraped post: What concerns, besides price, would you have as a home owner if offered window cleaning services?
+2025-05-07 23:33:44,006 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh27wn/i_dont_know_what_to_do_about_my_giveaway/.json
+2025-05-07 23:33:44,006 - INFO - Extracting comments
+2025-05-07 23:33:44,007 - INFO - Successfully extracted comments
+2025-05-07 23:33:44,007 - INFO - Successfully scraped post: I don't know what to do about my giveaway
+2025-05-07 23:33:44,574 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh26w2/has_any_ordered_from_daddy_butter/.json
+2025-05-07 23:33:44,575 - INFO - Extracting comments
+2025-05-07 23:33:44,575 - INFO - Successfully extracted comments
+2025-05-07 23:33:44,575 - INFO - Successfully scraped post: Has any ordered from Daddy butter?
+2025-05-07 23:33:46,010 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh25em/where_are_yall_buying_tshirts/.json
+2025-05-07 23:33:46,011 - INFO - Extracting comments
+2025-05-07 23:33:46,011 - INFO - Successfully extracted comments
+2025-05-07 23:33:46,011 - INFO - Successfully scraped post: Where are y'all buying T-Shirts?
+2025-05-07 23:33:46,994 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh233m/is_dwarka_courier_legit/.json
+2025-05-07 23:33:46,995 - INFO - Extracting comments
+2025-05-07 23:33:46,995 - INFO - Successfully extracted comments
+2025-05-07 23:33:46,995 - INFO - Successfully scraped post: Is Dwarka Courier legit?
+2025-05-07 23:33:49,041 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh1tfn/feedback_on_how_can_i_make_it_better_when_it/.json
+2025-05-07 23:33:49,041 - INFO - Extracting comments
+2025-05-07 23:33:49,041 - INFO - Extracting comments
+2025-05-07 23:33:49,042 - INFO - Successfully extracted comments
+2025-05-07 23:33:49,042 - INFO - Successfully extracted comments
+2025-05-07 23:33:49,042 - INFO - Successfully scraped post: Feedback on how can I make it better when it comes to presenting campaign....
+2025-05-07 23:33:50,361 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh1rbf/any_tips_for_organic_growth_on_facebook/.json
+2025-05-07 23:33:50,362 - INFO - Extracting comments
+2025-05-07 23:33:50,362 - INFO - Successfully extracted comments
+2025-05-07 23:33:50,362 - INFO - Successfully scraped post: Any tips for organic growth on Facebook?
+2025-05-07 23:33:52,360 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh1e48/business_card_for_interior_design_business/.json
+2025-05-07 23:33:52,361 - INFO - Extracting comments
+2025-05-07 23:33:52,361 - INFO - Successfully extracted comments
+2025-05-07 23:33:52,361 - INFO - Successfully scraped post: Business card for Interior Design business leading to travel points?
+2025-05-07 23:33:54,411 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh0wbk/how_i_built_a_digital_toolkit_for_side_hustlers/.json
+2025-05-07 23:33:54,412 - INFO - Extracting comments
+2025-05-07 23:33:54,412 - INFO - Successfully extracted comments
+2025-05-07 23:33:54,412 - INFO - Successfully scraped post: How I built a digital toolkit for side hustlers with \u20b90 starting capital
+2025-05-07 23:34:21,188 - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh0du8/we_built_a_5day_traction_sprint_to_help_startups/.json
+2025-05-07 23:34:35,486 - WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh0du8/we_built_a_5day_traction_sprint_to_help_startups/.json
+2025-05-07 23:34:53,581 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh0du8/we_built_a_5day_traction_sprint_to_help_startups/.json
+2025-05-07 23:35:19,690 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.reddit.com', port=443): Read timed out. (read timeout=10)")': /r/smallbusiness/comments/1kh0du8/we_built_a_5day_traction_sprint_to_help_startups/.json
+2025-05-07 23:35:43,318 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgzte8/exactly_what_happened/.json
+2025-05-07 23:35:43,319 - INFO - Extracting comments
+2025-05-07 23:35:43,319 - INFO - Successfully extracted comments
+2025-05-07 23:35:43,319 - INFO - Successfully scraped post: Exactly what happened?
+2025-05-07 23:35:55,470 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgzjie/what_software_to_use_to_get_started_on_a_home/.json
+2025-05-07 23:35:55,470 - INFO - Extracting comments
+2025-05-07 23:35:55,471 - INFO - Successfully extracted comments
+2025-05-07 23:35:55,471 - INFO - Successfully scraped post: What Software to use to get started on a home servicing business
+2025-05-07 23:42:32,970 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 50, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-07 23:42:34,645 - INFO - Subreddit/user posts request successful
+2025-05-07 23:42:36,464 - INFO - Sleeping for random time
+2025-05-07 23:42:37,825 - INFO - Subreddit/user posts request successful
+2025-05-07 23:42:38,998 - INFO - Sleeping for random time
+2025-05-07 23:42:40,460 - INFO - Subreddit/user posts request successful
+2025-05-07 23:42:42,142 - INFO - Sleeping for random time
+2025-05-07 23:42:43,347 - INFO - Subreddit/user posts request successful
+2025-05-07 23:42:45,212 - INFO - Sleeping for random time
+2025-05-07 23:42:46,356 - INFO - Subreddit/user posts request successful
+2025-05-07 23:42:47,516 - INFO - Sleeping for random time
+2025-05-07 23:42:47,516 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-07 23:42:48,083 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh443r/advice_with_how_to_deal_with_problem_customer/.json
+2025-05-07 23:42:48,083 - INFO - Extracting comments
+2025-05-07 23:42:48,083 - INFO - Successfully extracted comments
+2025-05-07 23:42:48,083 - INFO - Successfully scraped post: Advice with how to deal with problem customer (aggressive)
+2025-05-07 23:42:48,643 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh3hvw/best_ways_to_acquire_leads/.json
+2025-05-07 23:42:48,644 - INFO - Extracting comments
+2025-05-07 23:42:48,644 - INFO - Successfully extracted comments
+2025-05-07 23:42:48,644 - INFO - Successfully scraped post: Best ways to acquire leads?
+2025-05-07 23:42:49,087 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh3htx/best_ways_to_acquire_leads/.json
+2025-05-07 23:42:49,087 - INFO - Extracting comments
+2025-05-07 23:42:49,087 - INFO - Successfully extracted comments
+2025-05-07 23:42:49,088 - INFO - Successfully scraped post: Best ways to acquire leads?
+2025-05-07 23:42:49,642 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh3etn/i_quit_my_engineering_job_due_to_anxiety_and/.json
+2025-05-07 23:42:49,642 - INFO - Extracting comments
+2025-05-07 23:42:49,642 - INFO - Successfully extracted comments
+2025-05-07 23:42:49,643 - INFO - Successfully scraped post: "I quit my engineering job due to anxiety and built a small business—how do I scale from here?"
+2025-05-07 23:42:50,077 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh2uvi/whats_one_thing_you_wish_you_knew_before_starting/.json
+2025-05-07 23:42:50,078 - INFO - Extracting comments
+2025-05-07 23:42:50,078 - INFO - Successfully extracted comments
+2025-05-07 23:42:50,078 - INFO - Successfully scraped post: What’s one thing you wish you knew before starting a POD store?
+2025-05-07 23:42:50,563 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh2ja4/lead_gen_is_such_a_money_pithow_are_you_guys/.json
+2025-05-07 23:42:50,564 - INFO - Extracting comments
+2025-05-07 23:42:50,564 - INFO - Extracting comments
+2025-05-07 23:42:50,564 - INFO - Successfully extracted comments
+2025-05-07 23:42:50,564 - INFO - Extracting comments
+2025-05-07 23:42:50,564 - INFO - Successfully extracted comments
+2025-05-07 23:42:50,564 - INFO - Successfully extracted comments
+2025-05-07 23:42:50,564 - INFO - Successfully scraped post: Lead gen is such a money pit...how are you guys handling it?
+2025-05-07 23:42:51,103 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh2ida/advertising_agencies/.json
+2025-05-07 23:42:51,104 - INFO - Extracting comments
+2025-05-07 23:42:51,104 - INFO - Successfully extracted comments
+2025-05-07 23:42:51,105 - INFO - Successfully scraped post: Advertising Agencies
+2025-05-07 23:42:51,546 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh2dp8/what_concerns_besides_price_would_you_have_as_a/.json
+2025-05-07 23:42:51,546 - INFO - Extracting comments
+2025-05-07 23:42:51,547 - INFO - Successfully extracted comments
+2025-05-07 23:42:51,547 - INFO - Successfully scraped post: What concerns, besides price, would you have as a home owner if offered window cleaning services?
+2025-05-07 23:42:52,268 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh27wn/i_dont_know_what_to_do_about_my_giveaway/.json
+2025-05-07 23:42:52,269 - INFO - Extracting comments
+2025-05-07 23:42:52,269 - INFO - Successfully extracted comments
+2025-05-07 23:42:52,270 - INFO - Successfully scraped post: I don't know what to do about my giveaway
+2025-05-07 23:42:52,750 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh26w2/has_any_ordered_from_daddy_butter/.json
+2025-05-07 23:42:52,750 - INFO - Extracting comments
+2025-05-07 23:42:52,750 - INFO - Successfully extracted comments
+2025-05-07 23:42:52,751 - INFO - Successfully scraped post: Has any ordered from Daddy butter?
+2025-05-07 23:42:53,225 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh25em/where_are_yall_buying_tshirts/.json
+2025-05-07 23:42:53,226 - INFO - Extracting comments
+2025-05-07 23:42:53,226 - INFO - Successfully extracted comments
+2025-05-07 23:42:53,226 - INFO - Successfully scraped post: Where are y'all buying T-Shirts?
+2025-05-07 23:42:53,631 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh233m/is_dwarka_courier_legit/.json
+2025-05-07 23:42:53,632 - INFO - Extracting comments
+2025-05-07 23:42:53,632 - INFO - Successfully extracted comments
+2025-05-07 23:42:53,632 - INFO - Successfully scraped post: Is Dwarka Courier legit?
+2025-05-07 23:42:54,134 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh1tfn/feedback_on_how_can_i_make_it_better_when_it/.json
+2025-05-07 23:42:54,135 - INFO - Extracting comments
+2025-05-07 23:42:54,135 - INFO - Extracting comments
+2025-05-07 23:42:54,135 - INFO - Successfully extracted comments
+2025-05-07 23:42:54,135 - INFO - Successfully extracted comments
+2025-05-07 23:42:54,135 - INFO - Successfully scraped post: Feedback on how can I make it better when it comes to presenting campaign....
+2025-05-07 23:42:54,614 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh1rbf/any_tips_for_organic_growth_on_facebook/.json
+2025-05-07 23:42:54,614 - INFO - Extracting comments
+2025-05-07 23:42:54,614 - INFO - Successfully extracted comments
+2025-05-07 23:42:54,615 - INFO - Successfully scraped post: Any tips for organic growth on Facebook?
+2025-05-07 23:42:55,154 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh1e48/business_card_for_interior_design_business/.json
+2025-05-07 23:42:55,154 - INFO - Extracting comments
+2025-05-07 23:42:55,154 - INFO - Successfully extracted comments
+2025-05-07 23:42:55,155 - INFO - Successfully scraped post: Business card for Interior Design business leading to travel points?
+2025-05-07 23:42:55,578 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh0wbk/how_i_built_a_digital_toolkit_for_side_hustlers/.json
+2025-05-07 23:42:55,579 - INFO - Extracting comments
+2025-05-07 23:42:55,579 - INFO - Successfully extracted comments
+2025-05-07 23:42:55,579 - INFO - Successfully scraped post: How I built a digital toolkit for side hustlers with \u20b90 starting capital
+2025-05-07 23:42:56,043 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh0gzb/is_your_project_management_setup_doing_too_much/.json
+2025-05-07 23:42:56,043 - INFO - Extracting comments
+2025-05-07 23:42:56,043 - INFO - Successfully extracted comments
+2025-05-07 23:42:56,043 - INFO - Successfully scraped post: Is your project management setup… doing too much?
+2025-05-07 23:42:56,499 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh0du8/we_built_a_5day_traction_sprint_to_help_startups/.json
+2025-05-07 23:42:56,499 - INFO - Extracting comments
+2025-05-07 23:42:56,499 - INFO - Successfully extracted comments
+2025-05-07 23:42:56,499 - INFO - Successfully scraped post: We built a 5-day Traction Sprint to help startups identify and fix growth bottlenecks - AMA
+2025-05-07 23:42:56,959 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgzte8/exactly_what_happened/.json
+2025-05-07 23:42:56,960 - INFO - Extracting comments
+2025-05-07 23:42:56,960 - INFO - Successfully extracted comments
+2025-05-07 23:42:56,960 - INFO - Successfully scraped post: Exactly what happened?
+2025-05-07 23:42:57,417 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgzsjj/i_added_my_business_to_google_its_been_verified/.json
+2025-05-07 23:42:57,418 - INFO - Extracting comments
+2025-05-07 23:42:57,418 - INFO - Extracting comments
+2025-05-07 23:42:57,418 - INFO - Successfully extracted comments
+2025-05-07 23:42:57,418 - INFO - Successfully extracted comments
+2025-05-07 23:42:57,418 - INFO - Successfully scraped post: I added my business to google, it's been verified, but not showing up in searches.
+2025-05-07 23:42:57,878 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgzjie/what_software_to_use_to_get_started_on_a_home/.json
+2025-05-07 23:42:57,878 - INFO - Extracting comments
+2025-05-07 23:42:57,878 - INFO - Successfully extracted comments
+2025-05-07 23:42:57,879 - INFO - Successfully scraped post: What Software to use to get started on a home servicing business
+2025-05-07 23:42:58,358 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgzf81/how_do_you_manage_offshore_dev_teams_without/.json
+2025-05-07 23:42:58,358 - INFO - Extracting comments
+2025-05-07 23:42:58,359 - INFO - Successfully extracted comments
+2025-05-07 23:42:58,359 - INFO - Successfully scraped post: How do you manage offshore dev teams without miscommunication?
+2025-05-07 23:42:59,179 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgzaki/how_do_people_get_their_product_in_stores_and_how/.json
+2025-05-07 23:42:59,181 - INFO - Extracting comments
+2025-05-07 23:42:59,181 - INFO - Extracting comments
+2025-05-07 23:42:59,181 - INFO - Extracting comments
+2025-05-07 23:42:59,181 - INFO - Successfully extracted comments
+2025-05-07 23:42:59,181 - INFO - Extracting comments
+2025-05-07 23:42:59,181 - INFO - Successfully extracted comments
+2025-05-07 23:42:59,182 - INFO - Successfully extracted comments
+2025-05-07 23:42:59,182 - INFO - Extracting comments
+2025-05-07 23:42:59,182 - INFO - Successfully extracted comments
+2025-05-07 23:42:59,182 - INFO - Successfully extracted comments
+2025-05-07 23:42:59,182 - INFO - Successfully scraped post: how do people get their product in stores? and how do they manufacture it from scratch?
+2025-05-07 23:42:59,654 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgz7zk/can_automated_tool_be_integrated_with_email_crms/.json
+2025-05-07 23:42:59,654 - INFO - Extracting comments
+2025-05-07 23:42:59,654 - INFO - Successfully extracted comments
+2025-05-07 23:42:59,654 - INFO - Successfully scraped post: Can automated tool be integrated with email CRMs?
+2025-05-07 23:43:00,130 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kgz51e/best_practices_for_young_marketers/.json
+2025-05-07 23:43:00,131 - INFO - Extracting comments
+2025-05-07 23:43:00,131 - INFO - Successfully extracted comments
+2025-05-07 23:43:00,131 - INFO - Successfully scraped post: Best practices for young marketers?
+2025-05-07 23:43:00,558 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgz13a/what_should_ein_address_be_if_home_office/.json
+2025-05-07 23:43:00,559 - INFO - Extracting comments
+2025-05-07 23:43:00,559 - INFO - Successfully extracted comments
+2025-05-07 23:43:00,559 - INFO - Successfully scraped post: What should EIN address be if home office?
+2025-05-07 23:43:01,064 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgyy67/are_high_transaction_fees_from_payment_processors/.json
+2025-05-07 23:43:01,065 - INFO - Extracting comments
+2025-05-07 23:43:01,065 - INFO - Extracting comments
+2025-05-07 23:43:01,065 - INFO - Successfully extracted comments
+2025-05-07 23:43:01,065 - INFO - Extracting comments
+2025-05-07 23:43:01,065 - INFO - Successfully extracted comments
+2025-05-07 23:43:01,065 - INFO - Extracting comments
+2025-05-07 23:43:01,065 - INFO - Extracting comments
+2025-05-07 23:43:01,065 - INFO - Successfully extracted comments
+2025-05-07 23:43:01,065 - INFO - Successfully extracted comments
+2025-05-07 23:43:01,065 - INFO - Successfully extracted comments
+2025-05-07 23:43:01,066 - INFO - Successfully scraped post: Are high transaction fees from payment processors hurting your business too?
+2025-05-07 23:43:01,532 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgywzn/small_business_case_study_how_we_grew_our/.json
+2025-05-07 23:43:01,532 - INFO - Extracting comments
+2025-05-07 23:43:01,532 - INFO - Successfully extracted comments
+2025-05-07 23:43:01,532 - INFO - Successfully scraped post: Small Business Case Study: How We Grew Our Instagram &amp; TikTok with an AI Social Media Assistant (No Ad Spend!)
+2025-05-07 23:43:02,010 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kgyohp/how_target_my_viewers_in_my_own_country/.json
+2025-05-07 23:43:02,011 - INFO - Extracting comments
+2025-05-07 23:43:02,011 - INFO - Successfully extracted comments
+2025-05-07 23:43:02,011 - INFO - Successfully scraped post: How target my viewers in my own country?
+2025-05-07 23:43:02,459 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kgyeyx/reddit_answers/.json
+2025-05-07 23:43:02,460 - INFO - Extracting comments
+2025-05-07 23:43:02,460 - INFO - Successfully extracted comments
+2025-05-07 23:43:02,460 - INFO - Successfully scraped post: Reddit Answers
+2025-05-07 23:43:02,936 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgxsl6/how_are_small_businesses_handling_data_analysis/.json
+2025-05-07 23:43:02,936 - INFO - Extracting comments
+2025-05-07 23:43:02,936 - INFO - Extracting comments
+2025-05-07 23:43:02,936 - INFO - Extracting comments
+2025-05-07 23:43:02,936 - INFO - Extracting comments
+2025-05-07 23:43:02,936 - INFO - Successfully extracted comments
+2025-05-07 23:43:02,937 - INFO - Successfully extracted comments
+2025-05-07 23:43:02,937 - INFO - Successfully extracted comments
+2025-05-07 23:43:02,937 - INFO - Successfully extracted comments
+2025-05-07 23:43:02,937 - INFO - Successfully scraped post: How are small businesses handling data analysis without dedicated teams?
+2025-05-07 23:43:03,398 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kgxqjd/need_platform_for_event_rsvps/.json
+2025-05-07 23:43:03,399 - INFO - Extracting comments
+2025-05-07 23:43:03,399 - INFO - Extracting comments
+2025-05-07 23:43:03,399 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,399 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,399 - INFO - Successfully scraped post: Need platform for event RSVPs
+2025-05-07 23:43:03,942 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgxp3p/how_can_i_profit_from_my_endless_rotating_hobbies/.json
+2025-05-07 23:43:03,943 - INFO - Extracting comments
+2025-05-07 23:43:03,943 - INFO - Extracting comments
+2025-05-07 23:43:03,943 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,943 - INFO - Extracting comments
+2025-05-07 23:43:03,943 - INFO - Extracting comments
+2025-05-07 23:43:03,943 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,943 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,943 - INFO - Extracting comments
+2025-05-07 23:43:03,943 - INFO - Extracting comments
+2025-05-07 23:43:03,943 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,943 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,943 - INFO - Extracting comments
+2025-05-07 23:43:03,943 - INFO - Extracting comments
+2025-05-07 23:43:03,944 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,944 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,944 - INFO - Successfully extracted comments
+2025-05-07 23:43:03,944 - INFO - Successfully scraped post: How can I profit from my endless rotating hobbies?
+2025-05-07 23:43:04,836 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgxm6r/for_those_who_worked_a_95_and_got_laid_off_or/.json
+2025-05-07 23:43:04,837 - INFO - Extracting comments
+2025-05-07 23:43:04,837 - INFO - Extracting comments
+2025-05-07 23:43:04,837 - INFO - Extracting comments
+2025-05-07 23:43:04,837 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,837 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,837 - INFO - Extracting comments
+2025-05-07 23:43:04,838 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,838 - INFO - Extracting comments
+2025-05-07 23:43:04,838 - INFO - Extracting comments
+2025-05-07 23:43:04,838 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,838 - INFO - Extracting comments
+2025-05-07 23:43:04,838 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,838 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,838 - INFO - Extracting comments
+2025-05-07 23:43:04,838 - INFO - Extracting comments
+2025-05-07 23:43:04,839 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,839 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,839 - INFO - Extracting comments
+2025-05-07 23:43:04,839 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,839 - INFO - Extracting comments
+2025-05-07 23:43:04,839 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,839 - INFO - Extracting comments
+2025-05-07 23:43:04,839 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,839 - INFO - Successfully extracted comments
+2025-05-07 23:43:04,839 - INFO - Successfully scraped post: For those who worked a 9-5 and got laid off or quit for their small business. How is it going, any regrets?
+2025-05-07 23:43:05,394 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kgxh06/certs_that_are_worth_it_especially_when_im_not/.json
+2025-05-07 23:43:05,394 - INFO - Extracting comments
+2025-05-07 23:43:05,394 - INFO - Extracting comments
+2025-05-07 23:43:05,395 - INFO - Successfully extracted comments
+2025-05-07 23:43:05,395 - INFO - Successfully extracted comments
+2025-05-07 23:43:05,395 - INFO - Successfully scraped post: Certs that are worth it? (Especially when I'm not paying!)
+2025-05-07 23:43:05,834 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kguszo/meta_business_portfolio_issue/.json
+2025-05-07 23:43:05,835 - INFO - Extracting comments
+2025-05-07 23:43:05,835 - INFO - Successfully extracted comments
+2025-05-07 23:43:05,835 - INFO - Successfully scraped post: Meta business portfolio issue
+2025-05-07 23:43:06,293 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgx1jy/cuál_es_el_mejor_software_tpv_para_peluquerías/.json
+2025-05-07 23:43:06,293 - INFO - Extracting comments
+2025-05-07 23:43:06,294 - INFO - Successfully extracted comments
+2025-05-07 23:43:06,294 - INFO - Successfully scraped post: ¿Cuál es el mejor software TPV para Peluquerías?
+2025-05-07 23:43:06,783 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgwg64/help/.json
+2025-05-07 23:43:06,783 - INFO - Extracting comments
+2025-05-07 23:43:06,784 - INFO - Extracting comments
+2025-05-07 23:43:06,784 - INFO - Successfully extracted comments
+2025-05-07 23:43:06,784 - INFO - Successfully extracted comments
+2025-05-07 23:43:06,784 - INFO - Successfully scraped post: Help
+2025-05-07 23:43:07,228 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kgwbfu/does_anyone_actually_read_creative_briefs_or_are/.json
+2025-05-07 23:43:07,228 - INFO - Extracting comments
+2025-05-07 23:43:07,228 - INFO - Successfully extracted comments
+2025-05-07 23:43:07,228 - INFO - Successfully scraped post: Does anyone actually read creative briefs, or are we all pretending?
+2025-05-07 23:43:07,674 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgwbbk/does_anyone_else_have_a_repetitive_process_of/.json
+2025-05-07 23:43:07,674 - INFO - Extracting comments
+2025-05-07 23:43:07,675 - INFO - Successfully extracted comments
+2025-05-07 23:43:07,675 - INFO - Successfully scraped post: Does anyone else have a repetitive process of constantly needing to fill in PDF forms with different data constantly?
+2025-05-07 23:43:08,089 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgwazt/anyone_tried_sbhsr_for_payroll_outsourcing/.json
+2025-05-07 23:43:08,089 - INFO - Extracting comments
+2025-05-07 23:43:08,090 - INFO - Successfully extracted comments
+2025-05-07 23:43:08,090 - INFO - Successfully scraped post: Anyone tried SBHSR for payroll outsourcing services in Chennai?
+2025-05-07 23:43:08,556 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgwaqv/anyone_tried_franchising/.json
+2025-05-07 23:43:08,556 - INFO - Extracting comments
+2025-05-07 23:43:08,556 - INFO - Extracting comments
+2025-05-07 23:43:08,556 - INFO - Extracting comments
+2025-05-07 23:43:08,556 - INFO - Successfully extracted comments
+2025-05-07 23:43:08,556 - INFO - Successfully extracted comments
+2025-05-07 23:43:08,556 - INFO - Successfully extracted comments
+2025-05-07 23:43:08,556 - INFO - Successfully scraped post: Anyone tried franchising?
+2025-05-07 23:43:09,163 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kgw9n9/what_is_a_good_answer_to_the_interview_question/.json
+2025-05-07 23:43:09,164 - INFO - Extracting comments
+2025-05-07 23:43:09,165 - INFO - Extracting comments
+2025-05-07 23:43:09,165 - INFO - Extracting comments
+2025-05-07 23:43:09,165 - INFO - Extracting comments
+2025-05-07 23:43:09,165 - INFO - Extracting comments
+2025-05-07 23:43:09,165 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,165 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,165 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,165 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,165 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,165 - INFO - Successfully scraped post: What is a good answer to the interview question, "do you have any questions for me"
+2025-05-07 23:43:09,673 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgw19w/tariffs_is_there_a_place_to_go_that_posts_what/.json
+2025-05-07 23:43:09,674 - INFO - Extracting comments
+2025-05-07 23:43:09,674 - INFO - Extracting comments
+2025-05-07 23:43:09,674 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,674 - INFO - Extracting comments
+2025-05-07 23:43:09,674 - INFO - Extracting comments
+2025-05-07 23:43:09,674 - INFO - Extracting comments
+2025-05-07 23:43:09,674 - INFO - Extracting comments
+2025-05-07 23:43:09,674 - INFO - Extracting comments
+2025-05-07 23:43:09,674 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,674 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,674 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,675 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,675 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,675 - INFO - Successfully extracted comments
+2025-05-07 23:43:09,675 - INFO - Successfully scraped post: Tariffs: is there a place to go that posts what tariffs are currently in place?
+2025-05-07 23:43:10,123 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kgvwdz/are_we_entering_the_era_of_microcontent/.json
+2025-05-07 23:43:10,124 - INFO - Extracting comments
+2025-05-07 23:43:10,124 - INFO - Successfully extracted comments
+2025-05-07 23:43:10,124 - INFO - Successfully scraped post: Are We Entering the Era of Micro-Content + Micro-Conversion?
+2025-05-07 23:43:10,600 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kgvvtx/im_the_only_one_working_on_marketing_what_should/.json
+2025-05-07 23:43:10,600 - INFO - Extracting comments
+2025-05-07 23:43:10,600 - INFO - Successfully extracted comments
+2025-05-07 23:43:10,600 - INFO - Successfully scraped post: I'm the only one working on marketing - what should I prioritize? I work M-F 7am-12, so my time is limited.
+2025-05-07 23:43:11,065 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kgvtb7/meta_business_portfolio_issue/.json
+2025-05-07 23:43:11,065 - INFO - Extracting comments
+2025-05-07 23:43:11,066 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,066 - INFO - Successfully scraped post: Meta business portfolio issue
+2025-05-07 23:43:11,610 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgvjet/when_should_i_give_up_the_small_business_i_have/.json
+2025-05-07 23:43:11,610 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Extracting comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,611 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,612 - INFO - Extracting comments
+2025-05-07 23:43:11,612 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,612 - INFO - Extracting comments
+2025-05-07 23:43:11,612 - INFO - Extracting comments
+2025-05-07 23:43:11,612 - INFO - Extracting comments
+2025-05-07 23:43:11,612 - INFO - Extracting comments
+2025-05-07 23:43:11,612 - INFO - Extracting comments
+2025-05-07 23:43:11,612 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,612 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,612 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,612 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,612 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,612 - INFO - Successfully extracted comments
+2025-05-07 23:43:11,612 - INFO - Successfully scraped post: When should I give up the small business I have ?
+2025-05-07 23:43:12,112 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgut51/how_can_wireframes_help_streamline_my_website/.json
+2025-05-07 23:43:12,112 - INFO - Extracting comments
+2025-05-07 23:43:12,113 - INFO - Successfully extracted comments
+2025-05-07 23:43:12,113 - INFO - Successfully scraped post: How can wireframes help streamline my website redesign?
+2025-05-07 23:43:12,600 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kguise/what_current_social_media_trend_do_you_find/.json
+2025-05-07 23:43:12,601 - INFO - Extracting comments
+2025-05-07 23:43:12,601 - INFO - Extracting comments
+2025-05-07 23:43:12,601 - INFO - Extracting comments
+2025-05-07 23:43:12,601 - INFO - Successfully extracted comments
+2025-05-07 23:43:12,602 - INFO - Successfully extracted comments
+2025-05-07 23:43:12,602 - INFO - Successfully extracted comments
+2025-05-07 23:43:12,602 - INFO - Successfully scraped post: What current social media trend do you find mentally exhausting or overwhelming as a viewer?
+2025-05-08 01:05:35,689 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 01:05:37,312 - INFO - Subreddit/user posts request successful
+2025-05-08 01:05:38,687 - INFO - Sleeping for random time
+2025-05-08 01:05:40,006 - INFO - Subreddit/user posts request successful
+2025-05-08 01:05:41,379 - INFO - Sleeping for random time
+2025-05-08 01:05:41,963 - INFO - Subreddit/user posts request successful
+2025-05-08 01:05:43,460 - INFO - Sleeping for random time
+2025-05-08 01:05:44,081 - INFO - Subreddit/user posts request successful
+2025-05-08 01:05:45,461 - INFO - Sleeping for random time
+2025-05-08 01:05:46,245 - INFO - Subreddit/user posts request successful
+2025-05-08 01:05:47,410 - INFO - Sleeping for random time
+2025-05-08 01:05:48,139 - INFO - Subreddit/user posts request successful
+2025-05-08 01:05:49,558 - INFO - Sleeping for random time
+2025-05-08 01:05:49,558 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 01:05:50,028 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh67zw/sales_tax_question/.json
+2025-05-08 01:05:50,029 - INFO - Extracting comments
+2025-05-08 01:05:50,029 - INFO - Successfully extracted comments
+2025-05-08 01:05:50,029 - INFO - Successfully scraped post: Sales tax question?
+2025-05-08 01:05:50,618 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh5ree/anyone_wants_to_collaborate/.json
+2025-05-08 01:05:50,618 - INFO - Extracting comments
+2025-05-08 01:05:50,618 - INFO - Successfully extracted comments
+2025-05-08 01:05:50,618 - INFO - Successfully scraped post: Anyone wants to collaborate?
+2025-05-08 01:05:51,042 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh5kyd/accountingtax_software_for_small_farm/.json
+2025-05-08 01:05:51,042 - INFO - Extracting comments
+2025-05-08 01:05:51,042 - INFO - Successfully extracted comments
+2025-05-08 01:05:51,042 - INFO - Successfully scraped post: Accounting/tax software for small farm?
+2025-05-08 01:05:51,498 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh5kx9/are_you_successfully/.json
+2025-05-08 01:05:51,498 - INFO - Extracting comments
+2025-05-08 01:05:51,498 - INFO - Successfully extracted comments
+2025-05-08 01:05:51,498 - INFO - Successfully scraped post: Are you successfully?
+2025-05-08 01:05:51,937 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh5jti/built_artificial_intelligence_driven_accounting/.json
+2025-05-08 01:05:51,937 - INFO - Extracting comments
+2025-05-08 01:05:51,937 - INFO - Successfully extracted comments
+2025-05-08 01:05:51,938 - INFO - Successfully scraped post: Built Artificial Intelligence driven accounting prototype for small businesses — struggling to find beta users. Any advice?(Tried LinkedIn as well)
+2025-05-08 01:12:18,895 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 01:12:20,241 - INFO - Subreddit/user posts request successful
+2025-05-08 01:12:21,662 - INFO - Sleeping for random time
+2025-05-08 01:12:22,263 - INFO - Subreddit/user posts request successful
+2025-05-08 01:12:23,977 - INFO - Sleeping for random time
+2025-05-08 01:12:24,691 - INFO - Subreddit/user posts request successful
+2025-05-08 01:12:26,317 - INFO - Sleeping for random time
+2025-05-08 01:12:27,396 - INFO - Subreddit/user posts request successful
+2025-05-08 01:12:28,844 - INFO - Sleeping for random time
+2025-05-08 01:12:29,453 - INFO - Subreddit/user posts request successful
+2025-05-08 01:12:30,895 - INFO - Sleeping for random time
+2025-05-08 01:12:31,747 - INFO - Subreddit/user posts request successful
+2025-05-08 01:12:33,528 - INFO - Sleeping for random time
+2025-05-08 01:12:34,121 - INFO - Subreddit/user posts request successful
+2025-05-08 01:12:35,492 - INFO - Sleeping for random time
+2025-05-08 01:12:35,492 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 01:12:36,027 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh6j1b/how_many_orders_have_you_missed_in_your_email/.json
+2025-05-08 01:12:36,027 - INFO - Extracting comments
+2025-05-08 01:12:36,027 - INFO - Successfully extracted comments
+2025-05-08 01:12:36,027 - INFO - Successfully scraped post: How many orders have you missed in your email?
+2025-05-08 01:12:36,607 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh6dvz/looking_to_increase_waitlist_sign_ups_in_a_short/.json
+2025-05-08 01:12:36,608 - INFO - Extracting comments
+2025-05-08 01:12:36,608 - INFO - Successfully extracted comments
+2025-05-08 01:12:36,608 - INFO - Successfully scraped post: Looking to increase waitlist sign ups in a short period of time.
+2025-05-08 01:12:37,097 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh67zw/sales_tax_question/.json
+2025-05-08 01:12:37,098 - INFO - Extracting comments
+2025-05-08 01:12:37,098 - INFO - Successfully extracted comments
+2025-05-08 01:12:37,098 - INFO - Successfully scraped post: Sales tax question?
+2025-05-08 01:12:37,493 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh5ree/anyone_wants_to_collaborate/.json
+2025-05-08 01:12:37,493 - INFO - Extracting comments
+2025-05-08 01:12:37,493 - INFO - Successfully extracted comments
+2025-05-08 01:12:37,493 - INFO - Successfully scraped post: Anyone wants to collaborate?
+2025-05-08 01:12:37,932 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh5kyd/accountingtax_software_for_small_farm/.json
+2025-05-08 01:12:37,932 - INFO - Extracting comments
+2025-05-08 01:12:37,932 - INFO - Successfully extracted comments
+2025-05-08 01:12:37,932 - INFO - Successfully scraped post: Accounting/tax software for small farm?
+2025-05-08 01:13:39,173 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 01:13:39,839 - INFO - Subreddit/user posts request successful
+2025-05-08 01:13:41,006 - INFO - Sleeping for random time
+2025-05-08 01:14:47,916 - INFO - Subreddit/user posts request unsuccessful: HTTPSConnectionPool(host='www.reddit.com', port=443): Max retries exceeded with url: /user/old_temperature4590/m/financebusiness/new.json?limit=5&after=t3_1kh1nai&raw_json=1&t=all (Caused by ResponseError('too many 429 error responses'))
+2025-05-08 01:14:47,918 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 01:14:48,579 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh6j1b/how_many_orders_have_you_missed_in_your_email/.json
+2025-05-08 01:14:48,580 - INFO - Extracting comments
+2025-05-08 01:14:48,580 - INFO - Successfully extracted comments
+2025-05-08 01:14:48,580 - INFO - Successfully scraped post: How many orders have you missed in your email?
+2025-05-08 01:55:47,291 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 01:55:48,005 - INFO - Subreddit/user posts request successful
+2025-05-08 01:55:49,656 - INFO - Sleeping for random time
+2025-05-08 01:55:50,369 - INFO - Subreddit/user posts request successful
+2025-05-08 01:55:52,111 - INFO - Sleeping for random time
+2025-05-08 01:55:52,752 - INFO - Subreddit/user posts request successful
+2025-05-08 01:55:53,932 - INFO - Sleeping for random time
+2025-05-08 01:55:55,072 - INFO - Subreddit/user posts request successful
+2025-05-08 01:55:56,730 - INFO - Sleeping for random time
+2025-05-08 01:55:57,254 - INFO - Subreddit/user posts request successful
+2025-05-08 01:55:58,366 - INFO - Sleeping for random time
+2025-05-08 01:55:58,366 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 01:55:58,821 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7ax1/using_pirateship_as_a_nonbusiness_owner/.json
+2025-05-08 01:55:58,821 - INFO - Extracting comments
+2025-05-08 01:55:58,822 - INFO - Successfully extracted comments
+2025-05-08 01:55:58,822 - INFO - Successfully scraped post: Using pirateship as a non-business owner?
+2025-05-08 01:55:59,231 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh00e8/tracking_user_analytics_or_something_like_that/.json
+2025-05-08 01:55:59,232 - INFO - Extracting comments
+2025-05-08 01:55:59,232 - INFO - Successfully extracted comments
+2025-05-08 01:55:59,232 - INFO - Successfully scraped post: Tracking user analytics… or something like that
+2025-05-08 01:55:59,635 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kgzbew/is_anybody_else_having_success_with_sms_as/.json
+2025-05-08 01:55:59,636 - INFO - Extracting comments
+2025-05-08 01:55:59,636 - INFO - Extracting comments
+2025-05-08 01:55:59,636 - INFO - Successfully extracted comments
+2025-05-08 01:55:59,636 - INFO - Successfully extracted comments
+2025-05-08 01:55:59,636 - INFO - Successfully scraped post: Is anybody else having success with SMS as first-touch in lead gen?
+2025-05-08 01:56:00,054 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh77lw/meta_remarketing_audience_not_populating_after/.json
+2025-05-08 01:56:00,055 - INFO - Extracting comments
+2025-05-08 01:56:00,055 - INFO - Successfully extracted comments
+2025-05-08 01:56:00,055 - INFO - Successfully scraped post: Meta Remarketing Audience Not Populating After 11k Visits – What Could Be Wrong?
+2025-05-08 01:56:00,461 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh6j1b/how_many_orders_have_you_missed_in_your_email/.json
+2025-05-08 01:56:00,461 - INFO - Extracting comments
+2025-05-08 01:56:00,461 - INFO - Extracting comments
+2025-05-08 01:56:00,461 - INFO - Successfully extracted comments
+2025-05-08 01:56:00,461 - INFO - Successfully extracted comments
+2025-05-08 01:56:00,461 - INFO - Successfully scraped post: How many orders have you missed in your email?
+2025-05-08 02:16:03,219 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 02:16:04,618 - INFO - Subreddit/user posts request successful
+2025-05-08 02:16:05,813 - INFO - Sleeping for random time
+2025-05-08 02:16:06,395 - INFO - Subreddit/user posts request successful
+2025-05-08 02:16:08,014 - INFO - Sleeping for random time
+2025-05-08 02:16:08,529 - INFO - Subreddit/user posts request successful
+2025-05-08 02:16:10,409 - INFO - Sleeping for random time
+2025-05-08 02:16:10,998 - INFO - Subreddit/user posts request successful
+2025-05-08 02:16:12,614 - INFO - Sleeping for random time
+2025-05-08 02:16:13,192 - INFO - Subreddit/user posts request successful
+2025-05-08 02:16:14,288 - INFO - Sleeping for random time
+2025-05-08 02:16:14,288 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 02:16:14,729 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7st7/where_do_you_look_for_solutions_for_your_pain/.json
+2025-05-08 02:16:14,730 - INFO - Extracting comments
+2025-05-08 02:16:14,730 - INFO - Successfully extracted comments
+2025-05-08 02:16:14,730 - INFO - Successfully scraped post: Where do you look for solutions for your pain points?
+2025-05-08 02:16:15,173 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7ax1/using_pirateship_as_a_nonbusiness_owner/.json
+2025-05-08 02:16:15,174 - INFO - Extracting comments
+2025-05-08 02:16:15,174 - INFO - Successfully extracted comments
+2025-05-08 02:16:15,174 - INFO - Successfully scraped post: Using pirateship as a non-business owner?
+2025-05-08 02:16:15,572 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh00e8/tracking_user_analytics_or_something_like_that/.json
+2025-05-08 02:16:15,572 - INFO - Extracting comments
+2025-05-08 02:16:15,572 - INFO - Successfully extracted comments
+2025-05-08 02:16:15,573 - INFO - Successfully scraped post: Tracking user analytics… or something like that
+2025-05-08 02:16:15,987 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kgzbew/is_anybody_else_having_success_with_sms_as/.json
+2025-05-08 02:16:15,988 - INFO - Extracting comments
+2025-05-08 02:16:15,988 - INFO - Extracting comments
+2025-05-08 02:16:15,988 - INFO - Extracting comments
+2025-05-08 02:16:15,988 - INFO - Successfully extracted comments
+2025-05-08 02:16:15,988 - INFO - Successfully extracted comments
+2025-05-08 02:16:15,988 - INFO - Successfully extracted comments
+2025-05-08 02:16:15,988 - INFO - Successfully scraped post: Is anybody else having success with SMS as first-touch in lead gen?
+2025-05-08 02:16:16,399 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh77lw/meta_remarketing_audience_not_populating_after/.json
+2025-05-08 02:16:16,400 - INFO - Extracting comments
+2025-05-08 02:16:16,400 - INFO - Successfully extracted comments
+2025-05-08 02:16:16,400 - INFO - Successfully scraped post: Meta Remarketing Audience Not Populating After 11k Visits – What Could Be Wrong?
+2025-05-08 02:21:43,087 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 02:21:44,508 - INFO - Subreddit/user posts request successful
+2025-05-08 02:21:45,523 - INFO - Sleeping for random time
+2025-05-08 02:21:46,092 - INFO - Subreddit/user posts request successful
+2025-05-08 02:21:47,471 - INFO - Sleeping for random time
+2025-05-08 02:21:48,077 - INFO - Subreddit/user posts request successful
+2025-05-08 02:21:49,117 - INFO - Sleeping for random time
+2025-05-08 02:21:49,754 - INFO - Subreddit/user posts request successful
+2025-05-08 02:21:50,910 - INFO - Sleeping for random time
+2025-05-08 02:21:51,504 - INFO - Subreddit/user posts request successful
+2025-05-08 02:21:53,009 - INFO - Sleeping for random time
+2025-05-08 02:21:53,009 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 02:21:53,443 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh88cq/amazon_affiliate_partnership/.json
+2025-05-08 02:21:53,444 - INFO - Extracting comments
+2025-05-08 02:21:53,444 - INFO - Successfully extracted comments
+2025-05-08 02:21:53,444 - INFO - Successfully scraped post: Amazon Affiliate - partnership
+2025-05-08 02:21:53,873 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7st7/where_do_you_look_for_solutions_for_your_pain/.json
+2025-05-08 02:21:53,873 - INFO - Extracting comments
+2025-05-08 02:21:53,873 - INFO - Successfully extracted comments
+2025-05-08 02:21:53,873 - INFO - Successfully scraped post: Where do you look for solutions for your pain points?
+2025-05-08 02:21:54,275 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7ax1/using_pirateship_as_a_nonbusiness_owner/.json
+2025-05-08 02:21:54,275 - INFO - Extracting comments
+2025-05-08 02:21:54,275 - INFO - Successfully extracted comments
+2025-05-08 02:21:54,275 - INFO - Successfully scraped post: Using pirateship as a non-business owner?
+2025-05-08 02:21:54,693 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh00e8/tracking_user_analytics_or_something_like_that/.json
+2025-05-08 02:21:54,693 - INFO - Extracting comments
+2025-05-08 02:21:54,693 - INFO - Successfully extracted comments
+2025-05-08 02:21:54,694 - INFO - Successfully scraped post: Tracking user analytics… or something like that
+2025-05-08 02:21:55,096 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kgzbew/is_anybody_else_having_success_with_sms_as/.json
+2025-05-08 02:21:55,097 - INFO - Extracting comments
+2025-05-08 02:21:55,097 - INFO - Extracting comments
+2025-05-08 02:21:55,097 - INFO - Extracting comments
+2025-05-08 02:21:55,097 - INFO - Successfully extracted comments
+2025-05-08 02:21:55,097 - INFO - Successfully extracted comments
+2025-05-08 02:21:55,097 - INFO - Successfully extracted comments
+2025-05-08 02:21:55,098 - INFO - Successfully scraped post: Is anybody else having success with SMS as first-touch in lead gen?
+2025-05-08 02:23:44,392 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 02:23:45,184 - INFO - Subreddit/user posts request successful
+2025-05-08 02:23:46,368 - INFO - Sleeping for random time
+2025-05-08 02:23:47,082 - INFO - Subreddit/user posts request successful
+2025-05-08 02:23:48,499 - INFO - Sleeping for random time
+2025-05-08 02:23:49,034 - INFO - Subreddit/user posts request successful
+2025-05-08 02:23:50,415 - INFO - Sleeping for random time
+2025-05-08 02:23:51,134 - INFO - Subreddit/user posts request successful
+2025-05-08 02:23:53,069 - INFO - Sleeping for random time
+2025-05-08 02:23:53,645 - INFO - Subreddit/user posts request successful
+2025-05-08 02:23:55,021 - INFO - Sleeping for random time
+2025-05-08 02:23:55,021 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 02:23:55,442 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh89ma/where_do_people_usually_promote_beginner_blogs_in/.json
+2025-05-08 02:23:55,442 - INFO - Extracting comments
+2025-05-08 02:23:55,442 - INFO - Successfully extracted comments
+2025-05-08 02:23:55,442 - INFO - Successfully scraped post: Where do people usually promote beginner blogs in a niche like gaming accessories?
+2025-05-08 02:23:55,927 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh88cq/amazon_affiliate_partnership/.json
+2025-05-08 02:23:55,928 - INFO - Extracting comments
+2025-05-08 02:23:55,928 - INFO - Successfully extracted comments
+2025-05-08 02:23:55,928 - INFO - Successfully scraped post: Amazon Affiliate - partnership
+2025-05-08 02:23:56,349 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7st7/where_do_you_look_for_solutions_for_your_pain/.json
+2025-05-08 02:23:56,349 - INFO - Extracting comments
+2025-05-08 02:23:56,349 - INFO - Successfully extracted comments
+2025-05-08 02:23:56,350 - INFO - Successfully scraped post: Where do you look for solutions for your pain points?
+2025-05-08 02:23:56,770 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7ax1/using_pirateship_as_a_nonbusiness_owner/.json
+2025-05-08 02:23:56,771 - INFO - Extracting comments
+2025-05-08 02:23:56,771 - INFO - Successfully extracted comments
+2025-05-08 02:23:56,771 - INFO - Successfully scraped post: Using pirateship as a non-business owner?
+2025-05-08 02:23:57,142 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh00e8/tracking_user_analytics_or_something_like_that/.json
+2025-05-08 02:23:57,142 - INFO - Extracting comments
+2025-05-08 02:23:57,142 - INFO - Successfully extracted comments
+2025-05-08 02:23:57,142 - INFO - Successfully scraped post: Tracking user analytics… or something like that
+2025-05-08 02:25:04,640 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 02:25:05,313 - INFO - Subreddit/user posts request successful
+2025-05-08 02:25:07,196 - INFO - Sleeping for random time
+2025-05-08 02:25:07,751 - INFO - Subreddit/user posts request successful
+2025-05-08 02:25:08,893 - INFO - Sleeping for random time
+2025-05-08 02:25:09,439 - INFO - Subreddit/user posts request successful
+2025-05-08 02:25:10,889 - INFO - Sleeping for random time
+2025-05-08 02:25:11,476 - INFO - Subreddit/user posts request successful
+2025-05-08 02:25:12,568 - INFO - Sleeping for random time
+2025-05-08 02:25:13,236 - INFO - Subreddit/user posts request successful
+2025-05-08 02:25:14,841 - INFO - Sleeping for random time
+2025-05-08 02:25:14,841 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 02:25:15,231 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh89ma/where_do_people_usually_promote_beginner_blogs_in/.json
+2025-05-08 02:25:15,231 - INFO - Extracting comments
+2025-05-08 02:25:15,231 - INFO - Successfully extracted comments
+2025-05-08 02:25:15,231 - INFO - Successfully scraped post: Where do people usually promote beginner blogs in a niche like gaming accessories?
+2025-05-08 02:25:15,655 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh88cq/amazon_affiliate_partnership/.json
+2025-05-08 02:25:15,656 - INFO - Extracting comments
+2025-05-08 02:25:15,656 - INFO - Successfully extracted comments
+2025-05-08 02:25:15,656 - INFO - Successfully scraped post: Amazon Affiliate - partnership
+2025-05-08 02:25:16,069 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7st7/where_do_you_look_for_solutions_for_your_pain/.json
+2025-05-08 02:25:16,070 - INFO - Extracting comments
+2025-05-08 02:25:16,070 - INFO - Successfully extracted comments
+2025-05-08 02:25:16,070 - INFO - Successfully scraped post: Where do you look for solutions for your pain points?
+2025-05-08 02:25:16,489 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7ax1/using_pirateship_as_a_nonbusiness_owner/.json
+2025-05-08 02:25:16,489 - INFO - Extracting comments
+2025-05-08 02:25:16,490 - INFO - Successfully extracted comments
+2025-05-08 02:25:16,490 - INFO - Successfully scraped post: Using pirateship as a non-business owner?
+2025-05-08 02:25:16,915 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh00e8/tracking_user_analytics_or_something_like_that/.json
+2025-05-08 02:25:16,915 - INFO - Extracting comments
+2025-05-08 02:25:16,916 - INFO - Successfully extracted comments
+2025-05-08 02:25:16,916 - INFO - Successfully scraped post: Tracking user analytics… or something like that
+2025-05-08 02:26:24,592 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 02:26:25,633 - INFO - Subreddit/user posts request successful
+2025-05-08 02:26:27,353 - INFO - Sleeping for random time
+2025-05-08 02:26:27,898 - INFO - Subreddit/user posts request successful
+2025-05-08 02:26:29,416 - INFO - Sleeping for random time
+2025-05-08 02:26:30,644 - INFO - Subreddit/user posts request successful
+2025-05-08 02:26:31,885 - INFO - Sleeping for random time
+2025-05-08 02:26:32,978 - INFO - Subreddit/user posts request successful
+2025-05-08 02:26:34,920 - INFO - Sleeping for random time
+2025-05-08 02:26:35,554 - INFO - Subreddit/user posts request successful
+2025-05-08 02:26:36,757 - INFO - Sleeping for random time
+2025-05-08 02:26:36,757 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 02:26:37,166 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh89ma/where_do_people_usually_promote_beginner_blogs_in/.json
+2025-05-08 02:26:37,167 - INFO - Extracting comments
+2025-05-08 02:26:37,167 - INFO - Successfully extracted comments
+2025-05-08 02:26:37,167 - INFO - Successfully scraped post: Where do people usually promote beginner blogs in a niche like gaming accessories?
+2025-05-08 02:27:44,040 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7st7/where_do_you_look_for_solutions_for_your_pain/.json
+2025-05-08 02:27:44,041 - INFO - Extracting comments
+2025-05-08 02:27:44,041 - INFO - Successfully extracted comments
+2025-05-08 02:27:44,041 - INFO - Successfully scraped post: Where do you look for solutions for your pain points?
+2025-05-08 02:27:44,466 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7ax1/using_pirateship_as_a_nonbusiness_owner/.json
+2025-05-08 02:27:44,466 - INFO - Extracting comments
+2025-05-08 02:27:44,466 - INFO - Successfully extracted comments
+2025-05-08 02:27:44,467 - INFO - Successfully scraped post: Using pirateship as a non-business owner?
+2025-05-08 02:27:44,921 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh00e8/tracking_user_analytics_or_something_like_that/.json
+2025-05-08 02:27:44,921 - INFO - Extracting comments
+2025-05-08 02:27:44,921 - INFO - Successfully extracted comments
+2025-05-08 02:27:44,921 - INFO - Successfully scraped post: Tracking user analytics… or something like that
+2025-05-08 02:40:53,090 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 02:40:53,736 - INFO - Subreddit/user posts request successful
+2025-05-08 02:40:55,334 - INFO - Sleeping for random time
+2025-05-08 02:40:55,957 - INFO - Subreddit/user posts request successful
+2025-05-08 02:40:57,601 - INFO - Sleeping for random time
+2025-05-08 02:40:58,189 - INFO - Subreddit/user posts request successful
+2025-05-08 02:40:59,507 - INFO - Sleeping for random time
+2025-05-08 02:41:00,070 - INFO - Subreddit/user posts request successful
+2025-05-08 02:41:01,606 - INFO - Sleeping for random time
+2025-05-08 02:41:02,143 - INFO - Subreddit/user posts request successful
+2025-05-08 02:41:04,117 - INFO - Sleeping for random time
+2025-05-08 02:41:04,678 - INFO - Subreddit/user posts request successful
+2025-05-08 02:41:05,686 - INFO - Sleeping for random time
+2025-05-08 02:41:05,686 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 02:41:06,149 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh8fv5/first_website_godaddy_or_wix/.json
+2025-05-08 02:41:06,150 - INFO - Extracting comments
+2025-05-08 02:41:06,150 - INFO - Successfully extracted comments
+2025-05-08 02:41:06,150 - INFO - Successfully scraped post: First website, godaddy or wix?
+2025-05-08 02:41:06,562 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh89ma/where_do_people_usually_promote_beginner_blogs_in/.json
+2025-05-08 02:41:06,563 - INFO - Extracting comments
+2025-05-08 02:41:06,563 - INFO - Successfully extracted comments
+2025-05-08 02:41:06,563 - INFO - Successfully scraped post: Where do people usually promote beginner blogs in a niche like gaming accessories?
+2025-05-08 02:41:06,963 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh88cq/amazon_affiliate_partnership/.json
+2025-05-08 02:41:06,963 - INFO - Extracting comments
+2025-05-08 02:41:06,963 - INFO - Successfully extracted comments
+2025-05-08 02:41:06,963 - INFO - Successfully scraped post: Amazon Affiliate - partnership
+2025-05-08 02:41:07,394 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7st7/where_do_you_look_for_solutions_for_your_pain/.json
+2025-05-08 02:41:07,394 - INFO - Extracting comments
+2025-05-08 02:41:07,394 - INFO - Successfully extracted comments
+2025-05-08 02:41:07,395 - INFO - Successfully scraped post: Where do you look for solutions for your pain points?
+2025-05-08 02:41:07,810 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7ax1/using_pirateship_as_a_nonbusiness_owner/.json
+2025-05-08 02:41:07,810 - INFO - Extracting comments
+2025-05-08 02:41:07,811 - INFO - Successfully extracted comments
+2025-05-08 02:41:07,811 - INFO - Successfully scraped post: Using pirateship as a non-business owner?
+2025-05-08 02:47:24,541 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 02:47:25,991 - INFO - Subreddit/user posts request successful
+2025-05-08 02:47:27,879 - INFO - Sleeping for random time
+2025-05-08 02:47:28,731 - INFO - Subreddit/user posts request successful
+2025-05-08 02:47:30,251 - INFO - Sleeping for random time
+2025-05-08 02:47:31,401 - INFO - Subreddit/user posts request successful
+2025-05-08 02:47:32,935 - INFO - Sleeping for random time
+2025-05-08 02:47:33,557 - INFO - Subreddit/user posts request successful
+2025-05-08 02:47:35,297 - INFO - Sleeping for random time
+2025-05-08 02:47:36,438 - INFO - Subreddit/user posts request successful
+2025-05-08 02:47:38,232 - INFO - Sleeping for random time
+2025-05-08 02:47:39,596 - INFO - Subreddit/user posts request successful
+2025-05-08 02:54:12,828 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 02:54:13,672 - INFO - Subreddit/user posts request successful
+2025-05-08 02:54:14,849 - INFO - Sleeping for random time
+2025-05-08 02:54:15,514 - INFO - Subreddit/user posts request successful
+2025-05-08 02:54:17,189 - INFO - Sleeping for random time
+2025-05-08 02:54:17,758 - INFO - Subreddit/user posts request successful
+2025-05-08 02:54:18,850 - INFO - Sleeping for random time
+2025-05-08 02:54:19,518 - INFO - Subreddit/user posts request successful
+2025-05-08 02:54:21,105 - INFO - Sleeping for random time
+2025-05-08 02:54:21,748 - INFO - Subreddit/user posts request successful
+2025-05-08 02:54:23,078 - INFO - Sleeping for random time
+2025-05-08 02:54:23,677 - INFO - Subreddit/user posts request successful
+2025-05-08 02:54:25,520 - INFO - Sleeping for random time
+2025-05-08 02:54:25,520 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 02:54:26,028 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh90qg/intl_package_delays_at_customs_clearance/.json
+2025-05-08 02:54:26,028 - INFO - Extracting comments
+2025-05-08 02:54:26,028 - INFO - Successfully extracted comments
+2025-05-08 02:54:26,028 - INFO - Successfully scraped post: Int'l Package Delays at Customs Clearance?
+2025-05-08 02:54:26,554 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh8fv5/first_website_godaddy_or_wix/.json
+2025-05-08 02:54:26,554 - INFO - Extracting comments
+2025-05-08 02:54:26,555 - INFO - Successfully extracted comments
+2025-05-08 02:54:26,555 - INFO - Successfully scraped post: First website, godaddy or wix?
+2025-05-08 02:54:26,995 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh89ma/where_do_people_usually_promote_beginner_blogs_in/.json
+2025-05-08 02:54:26,995 - INFO - Extracting comments
+2025-05-08 02:54:26,995 - INFO - Successfully extracted comments
+2025-05-08 02:54:26,995 - INFO - Successfully scraped post: Where do people usually promote beginner blogs in a niche like gaming accessories?
+2025-05-08 02:54:27,431 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh88cq/amazon_affiliate_partnership/.json
+2025-05-08 02:54:27,432 - INFO - Extracting comments
+2025-05-08 02:54:27,432 - INFO - Successfully extracted comments
+2025-05-08 02:54:27,432 - INFO - Successfully scraped post: Amazon Affiliate - partnership
+2025-05-08 02:54:27,868 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh7st7/where_do_you_look_for_solutions_for_your_pain/.json
+2025-05-08 02:54:27,868 - INFO - Extracting comments
+2025-05-08 02:54:27,869 - INFO - Successfully extracted comments
+2025-05-08 02:54:27,869 - INFO - Successfully scraped post: Where do you look for solutions for your pain points?
+2025-05-08 03:10:43,204 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 03:10:44,173 - INFO - Subreddit/user posts request successful
+2025-05-08 03:10:45,920 - INFO - Sleeping for random time
+2025-05-08 03:10:46,583 - INFO - Subreddit/user posts request successful
+2025-05-08 03:10:48,303 - INFO - Sleeping for random time
+2025-05-08 03:10:48,865 - INFO - Subreddit/user posts request successful
+2025-05-08 03:10:50,807 - INFO - Sleeping for random time
+2025-05-08 03:10:51,720 - INFO - Subreddit/user posts request successful
+2025-05-08 03:10:53,228 - INFO - Sleeping for random time
+2025-05-08 03:10:53,897 - INFO - Subreddit/user posts request successful
+2025-05-08 03:10:55,098 - INFO - Sleeping for random time
+2025-05-08 03:10:55,098 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 03:10:55,577 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh9a3p/can_i_have_pos_terminal_without_a_company/.json
+2025-05-08 03:10:55,578 - INFO - Extracting comments
+2025-05-08 03:10:55,578 - INFO - Successfully extracted comments
+2025-05-08 03:10:55,578 - INFO - Successfully scraped post: Can I have POS terminal without a company?
+2025-05-08 03:10:55,996 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh90qg/intl_package_delays_at_customs_clearance/.json
+2025-05-08 03:10:55,996 - INFO - Extracting comments
+2025-05-08 03:10:55,996 - INFO - Successfully extracted comments
+2025-05-08 03:10:55,996 - INFO - Successfully scraped post: Int'l Package Delays at Customs Clearance?
+2025-05-08 03:10:56,515 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh8fv5/first_website_godaddy_or_wix/.json
+2025-05-08 03:10:56,516 - INFO - Extracting comments
+2025-05-08 03:10:56,516 - INFO - Extracting comments
+2025-05-08 03:10:56,517 - INFO - Successfully extracted comments
+2025-05-08 03:10:56,517 - INFO - Successfully extracted comments
+2025-05-08 03:10:56,517 - INFO - Successfully scraped post: First website, godaddy or wix?
+2025-05-08 03:10:57,047 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh89ma/where_do_people_usually_promote_beginner_blogs_in/.json
+2025-05-08 03:10:57,047 - INFO - Extracting comments
+2025-05-08 03:10:57,047 - INFO - Successfully extracted comments
+2025-05-08 03:10:57,047 - INFO - Successfully scraped post: Where do people usually promote beginner blogs in a niche like gaming accessories?
+2025-05-08 03:10:57,461 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh88cq/amazon_affiliate_partnership/.json
+2025-05-08 03:10:57,461 - INFO - Extracting comments
+2025-05-08 03:10:57,461 - INFO - Successfully extracted comments
+2025-05-08 03:10:57,461 - INFO - Successfully scraped post: Amazon Affiliate - partnership
+2025-05-08 03:13:34,587 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 03:13:35,357 - INFO - Subreddit/user posts request successful
+2025-05-08 03:13:36,421 - INFO - Sleeping for random time
+2025-05-08 03:13:37,008 - INFO - Subreddit/user posts request successful
+2025-05-08 03:13:38,423 - INFO - Sleeping for random time
+2025-05-08 03:13:39,150 - INFO - Subreddit/user posts request successful
+2025-05-08 03:13:40,181 - INFO - Sleeping for random time
+2025-05-08 03:13:40,839 - INFO - Subreddit/user posts request successful
+2025-05-08 03:13:42,666 - INFO - Sleeping for random time
+2025-05-08 03:13:43,574 - INFO - Subreddit/user posts request successful
+2025-05-08 03:13:44,901 - INFO - Sleeping for random time
+2025-05-08 03:13:44,901 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 03:13:45,424 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh9a3p/can_i_have_pos_terminal_without_a_company/.json
+2025-05-08 03:13:45,424 - INFO - Extracting comments
+2025-05-08 03:13:45,424 - INFO - Successfully extracted comments
+2025-05-08 03:13:45,424 - INFO - Successfully scraped post: Can I have POS terminal without a company?
+2025-05-08 03:13:45,907 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh90qg/intl_package_delays_at_customs_clearance/.json
+2025-05-08 03:13:45,908 - INFO - Extracting comments
+2025-05-08 03:13:45,908 - INFO - Successfully extracted comments
+2025-05-08 03:13:45,908 - INFO - Successfully scraped post: Int'l Package Delays at Customs Clearance?
+2025-05-08 03:13:46,400 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kh8fv5/first_website_godaddy_or_wix/.json
+2025-05-08 03:13:46,401 - INFO - Extracting comments
+2025-05-08 03:13:46,402 - INFO - Extracting comments
+2025-05-08 03:13:46,402 - INFO - Successfully extracted comments
+2025-05-08 03:13:46,402 - INFO - Successfully extracted comments
+2025-05-08 03:13:46,402 - INFO - Successfully scraped post: First website, godaddy or wix?
+2025-05-08 03:13:46,872 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1kh89ma/where_do_people_usually_promote_beginner_blogs_in/.json
+2025-05-08 03:13:46,873 - INFO - Extracting comments
+2025-05-08 03:13:46,873 - INFO - Successfully extracted comments
+2025-05-08 03:13:46,873 - INFO - Successfully scraped post: Where do people usually promote beginner blogs in a niche like gaming accessories?
+2025-05-08 03:13:47,356 - INFO - Post details request successful : https://www.reddit.com/r/marketing/comments/1kh88cq/amazon_affiliate_partnership/.json
+2025-05-08 03:13:47,356 - INFO - Extracting comments
+2025-05-08 03:13:47,356 - INFO - Successfully extracted comments
+2025-05-08 03:13:47,357 - INFO - Successfully scraped post: Amazon Affiliate - partnership
+2025-05-08 07:46:03,382 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 07:46:04,204 - INFO - Subreddit/user posts request successful
+2025-05-08 07:46:06,164 - INFO - Sleeping for random time
+2025-05-08 07:46:07,186 - INFO - Subreddit/user posts request successful
+2025-05-08 07:46:09,052 - INFO - Sleeping for random time
+2025-05-08 07:46:10,108 - INFO - Subreddit/user posts request successful
+2025-05-08 07:46:11,674 - INFO - Sleeping for random time
+2025-05-08 07:46:12,448 - INFO - Subreddit/user posts request successful
+2025-05-08 07:46:14,362 - INFO - Sleeping for random time
+2025-05-08 07:46:15,072 - INFO - Subreddit/user posts request successful
+2025-05-08 07:46:16,538 - INFO - Sleeping for random time
+2025-05-08 07:46:16,538 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 07:46:17,006 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khepp4/c_corp_or_s_corp/.json
+2025-05-08 07:46:17,007 - INFO - Extracting comments
+2025-05-08 07:46:17,007 - INFO - Extracting comments
+2025-05-08 07:46:17,007 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,007 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,007 - INFO - Successfully scraped post: C Corp or S Corp?
+2025-05-08 07:46:17,515 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khei2m/am_i_overthinking_the_name/.json
+2025-05-08 07:46:17,516 - INFO - Extracting comments
+2025-05-08 07:46:17,516 - INFO - Extracting comments
+2025-05-08 07:46:17,516 - INFO - Extracting comments
+2025-05-08 07:46:17,516 - INFO - Extracting comments
+2025-05-08 07:46:17,516 - INFO - Extracting comments
+2025-05-08 07:46:17,516 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,516 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,516 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,516 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,516 - INFO - Extracting comments
+2025-05-08 07:46:17,517 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,517 - INFO - Extracting comments
+2025-05-08 07:46:17,517 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,517 - INFO - Extracting comments
+2025-05-08 07:46:17,517 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,517 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,517 - INFO - Successfully scraped post: Am I Overthinking the Name?
+2025-05-08 07:46:17,978 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgp7x4/nerve_pain_help/.json
+2025-05-08 07:46:17,978 - INFO - Extracting comments
+2025-05-08 07:46:17,978 - INFO - Successfully extracted comments
+2025-05-08 07:46:17,979 - INFO - Successfully scraped post: Nerve pain help
+2025-05-08 07:46:18,432 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1khduim/how_can_i_market_my_aipowered_clothing_app/.json
+2025-05-08 07:46:18,433 - INFO - Extracting comments
+2025-05-08 07:46:18,433 - INFO - Successfully extracted comments
+2025-05-08 07:46:18,433 - INFO - Successfully scraped post: How Can I Market My AI-Powered Clothing App
+2025-05-08 07:46:18,856 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1khdshy/marketers_whats_overwhelming_you_about_the_video/.json
+2025-05-08 07:46:18,857 - INFO - Extracting comments
+2025-05-08 07:46:18,857 - INFO - Successfully extracted comments
+2025-05-08 07:46:18,857 - INFO - Successfully scraped post: Marketers, what’s overwhelming you about the video production world?
+2025-05-08 07:46:25,790 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 07:46:26,969 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 400 Bad Request"
+2025-05-08 08:29:16,463 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 08:29:17,256 - INFO - Subreddit/user posts request successful
+2025-05-08 08:29:18,460 - INFO - Sleeping for random time
+2025-05-08 08:29:19,045 - INFO - Subreddit/user posts request successful
+2025-05-08 08:29:20,294 - INFO - Sleeping for random time
+2025-05-08 08:29:20,876 - INFO - Subreddit/user posts request successful
+2025-05-08 08:29:22,573 - INFO - Sleeping for random time
+2025-05-08 08:29:23,202 - INFO - Subreddit/user posts request successful
+2025-05-08 08:29:25,041 - INFO - Sleeping for random time
+2025-05-08 08:29:25,671 - INFO - Subreddit/user posts request successful
+2025-05-08 08:29:27,406 - INFO - Sleeping for random time
+2025-05-08 08:29:28,099 - INFO - Subreddit/user posts request successful
+2025-05-08 08:29:29,847 - INFO - Sleeping for random time
+2025-05-08 08:29:30,586 - INFO - Subreddit/user posts request successful
+2025-05-08 08:29:32,106 - INFO - Sleeping for random time
+2025-05-08 08:29:32,733 - INFO - Subreddit/user posts request successful
+2025-05-08 08:29:34,545 - INFO - Sleeping for random time
+2025-05-08 08:29:34,545 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 08:29:34,988 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khffs4/help_with_income_statement_part_of_business_plan/.json
+2025-05-08 08:29:34,988 - INFO - Extracting comments
+2025-05-08 08:29:34,989 - INFO - Successfully extracted comments
+2025-05-08 08:29:34,989 - INFO - Successfully scraped post: Help with income statement part of business plan
+2025-05-08 08:29:35,479 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khepp4/c_corp_or_s_corp/.json
+2025-05-08 08:29:35,480 - INFO - Extracting comments
+2025-05-08 08:29:35,480 - INFO - Extracting comments
+2025-05-08 08:29:35,480 - INFO - Successfully extracted comments
+2025-05-08 08:29:35,480 - INFO - Successfully extracted comments
+2025-05-08 08:29:35,480 - INFO - Successfully scraped post: C Corp or S Corp?
+2025-05-08 08:29:35,999 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khei2m/am_i_overthinking_the_name/.json
+2025-05-08 08:29:36,000 - INFO - Extracting comments
+2025-05-08 08:29:36,000 - INFO - Extracting comments
+2025-05-08 08:29:36,000 - INFO - Extracting comments
+2025-05-08 08:29:36,000 - INFO - Extracting comments
+2025-05-08 08:29:36,000 - INFO - Extracting comments
+2025-05-08 08:29:36,000 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,001 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,001 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,001 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,001 - INFO - Extracting comments
+2025-05-08 08:29:36,001 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,001 - INFO - Extracting comments
+2025-05-08 08:29:36,001 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,001 - INFO - Extracting comments
+2025-05-08 08:29:36,001 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,001 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,001 - INFO - Successfully scraped post: Am I Overthinking the Name?
+2025-05-08 08:29:36,432 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgp7x4/nerve_pain_help/.json
+2025-05-08 08:29:36,433 - INFO - Extracting comments
+2025-05-08 08:29:36,433 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,433 - INFO - Successfully scraped post: Nerve pain help
+2025-05-08 08:29:36,886 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1khduim/how_can_i_market_my_aipowered_clothing_app/.json
+2025-05-08 08:29:36,886 - INFO - Extracting comments
+2025-05-08 08:29:36,887 - INFO - Successfully extracted comments
+2025-05-08 08:29:36,887 - INFO - Successfully scraped post: How Can I Market My AI-Powered Clothing App
+2025-05-08 08:35:46,760 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 08:35:47,663 - INFO - Subreddit/user posts request successful
+2025-05-08 08:35:49,217 - INFO - Sleeping for random time
+2025-05-08 08:35:49,738 - INFO - Subreddit/user posts request successful
+2025-05-08 08:35:51,268 - INFO - Sleeping for random time
+2025-05-08 08:35:51,837 - INFO - Subreddit/user posts request successful
+2025-05-08 08:35:53,678 - INFO - Sleeping for random time
+2025-05-08 08:35:54,253 - INFO - Subreddit/user posts request successful
+2025-05-08 08:35:56,183 - INFO - Sleeping for random time
+2025-05-08 08:35:56,860 - INFO - Subreddit/user posts request successful
+2025-05-08 08:35:58,011 - INFO - Sleeping for random time
+2025-05-08 08:35:58,574 - INFO - Subreddit/user posts request successful
+2025-05-08 08:35:59,981 - INFO - Sleeping for random time
+2025-05-08 08:36:00,605 - INFO - Subreddit/user posts request successful
+2025-05-08 08:36:02,178 - INFO - Sleeping for random time
+2025-05-08 08:36:02,797 - INFO - Subreddit/user posts request successful
+2025-05-08 08:36:04,572 - INFO - Sleeping for random time
+2025-05-08 08:36:04,572 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 08:36:05,030 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khffs4/help_with_income_statement_part_of_business_plan/.json
+2025-05-08 08:36:05,030 - INFO - Extracting comments
+2025-05-08 08:36:05,030 - INFO - Successfully extracted comments
+2025-05-08 08:36:05,030 - INFO - Successfully scraped post: Help with income statement part of business plan
+2025-05-08 08:36:05,529 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khepp4/c_corp_or_s_corp/.json
+2025-05-08 08:36:05,529 - INFO - Extracting comments
+2025-05-08 08:36:05,529 - INFO - Extracting comments
+2025-05-08 08:36:05,530 - INFO - Successfully extracted comments
+2025-05-08 08:36:05,530 - INFO - Successfully extracted comments
+2025-05-08 08:36:05,530 - INFO - Successfully scraped post: C Corp or S Corp?
+2025-05-08 08:36:06,070 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khei2m/am_i_overthinking_the_name/.json
+2025-05-08 08:36:06,071 - INFO - Extracting comments
+2025-05-08 08:36:06,071 - INFO - Extracting comments
+2025-05-08 08:36:06,071 - INFO - Extracting comments
+2025-05-08 08:36:06,071 - INFO - Extracting comments
+2025-05-08 08:36:06,071 - INFO - Extracting comments
+2025-05-08 08:36:06,071 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,071 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,071 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,071 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,071 - INFO - Extracting comments
+2025-05-08 08:36:06,071 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,071 - INFO - Extracting comments
+2025-05-08 08:36:06,071 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,071 - INFO - Extracting comments
+2025-05-08 08:36:06,071 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,071 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,071 - INFO - Successfully scraped post: Am I Overthinking the Name?
+2025-05-08 08:36:06,518 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgp7x4/nerve_pain_help/.json
+2025-05-08 08:36:06,519 - INFO - Extracting comments
+2025-05-08 08:36:06,519 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,519 - INFO - Successfully scraped post: Nerve pain help
+2025-05-08 08:36:06,978 - INFO - Post details request successful : https://www.reddit.com/r/AskMarketing/comments/1khduim/how_can_i_market_my_aipowered_clothing_app/.json
+2025-05-08 08:36:06,978 - INFO - Extracting comments
+2025-05-08 08:36:06,978 - INFO - Successfully extracted comments
+2025-05-08 08:36:06,979 - INFO - Successfully scraped post: How Can I Market My AI-Powered Clothing App
+2025-05-08 08:36:14,202 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 08:36:19,568 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 08:36:19,571 - INFO - AFC remote call 1 is done.
+2025-05-08 08:48:25,538 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 08:48:26,299 - INFO - Subreddit/user posts request successful
+2025-05-08 08:48:27,507 - INFO - Sleeping for random time
+2025-05-08 08:48:28,108 - INFO - Subreddit/user posts request successful
+2025-05-08 08:48:29,950 - INFO - Sleeping for random time
+2025-05-08 08:48:30,513 - INFO - Subreddit/user posts request successful
+2025-05-08 08:48:31,699 - INFO - Sleeping for random time
+2025-05-08 08:48:32,817 - INFO - Subreddit/user posts request successful
+2025-05-08 08:48:34,281 - INFO - Sleeping for random time
+2025-05-08 08:48:34,894 - INFO - Subreddit/user posts request successful
+2025-05-08 08:48:36,769 - INFO - Sleeping for random time
+2025-05-08 08:48:37,419 - INFO - Subreddit/user posts request successful
+2025-05-08 08:48:39,235 - INFO - Sleeping for random time
+2025-05-08 08:48:39,822 - INFO - Subreddit/user posts request successful
+2025-05-08 08:48:40,872 - INFO - Sleeping for random time
+2025-05-08 08:48:40,872 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 08:48:41,324 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khga3t/anyone_else_get_killed_in_taxes/.json
+2025-05-08 08:48:41,325 - INFO - Extracting comments
+2025-05-08 08:48:41,325 - INFO - Successfully extracted comments
+2025-05-08 08:48:41,325 - INFO - Successfully scraped post: Anyone else get killed in taxes?
+2025-05-08 08:48:41,782 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khffs4/help_with_income_statement_part_of_business_plan/.json
+2025-05-08 08:48:41,783 - INFO - Extracting comments
+2025-05-08 08:48:41,783 - INFO - Successfully extracted comments
+2025-05-08 08:48:41,783 - INFO - Successfully scraped post: Help with income statement part of business plan
+2025-05-08 08:48:42,239 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khepp4/c_corp_or_s_corp/.json
+2025-05-08 08:48:42,240 - INFO - Extracting comments
+2025-05-08 08:48:42,240 - INFO - Extracting comments
+2025-05-08 08:48:42,240 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,240 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,240 - INFO - Successfully scraped post: C Corp or S Corp?
+2025-05-08 08:48:42,761 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khei2m/am_i_overthinking_the_name/.json
+2025-05-08 08:48:42,762 - INFO - Extracting comments
+2025-05-08 08:48:42,762 - INFO - Extracting comments
+2025-05-08 08:48:42,762 - INFO - Extracting comments
+2025-05-08 08:48:42,762 - INFO - Extracting comments
+2025-05-08 08:48:42,762 - INFO - Extracting comments
+2025-05-08 08:48:42,762 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,762 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,762 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,762 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,762 - INFO - Extracting comments
+2025-05-08 08:48:42,762 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,762 - INFO - Extracting comments
+2025-05-08 08:48:42,762 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,762 - INFO - Extracting comments
+2025-05-08 08:48:42,763 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,763 - INFO - Extracting comments
+2025-05-08 08:48:42,763 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,763 - INFO - Successfully extracted comments
+2025-05-08 08:48:42,763 - INFO - Successfully scraped post: Am I Overthinking the Name?
+2025-05-08 08:48:43,193 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1kgp7x4/nerve_pain_help/.json
+2025-05-08 08:48:43,193 - INFO - Extracting comments
+2025-05-08 08:48:43,193 - INFO - Successfully extracted comments
+2025-05-08 08:48:43,193 - INFO - Successfully scraped post: Nerve pain help
+2025-05-08 08:48:50,305 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 08:48:54,710 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 08:48:54,712 - INFO - AFC remote call 1 is done.
+2025-05-08 09:15:15,032 - INFO - Fetching subreddit/user posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness, limit: 5, category: new, time_filter: all, filter: ['Question', 'Help']
+2025-05-08 09:15:15,818 - INFO - Subreddit/user posts request successful
+2025-05-08 09:15:17,358 - INFO - Sleeping for random time
+2025-05-08 09:15:17,921 - INFO - Subreddit/user posts request successful
+2025-05-08 09:15:19,333 - INFO - Sleeping for random time
+2025-05-08 09:15:19,966 - INFO - Subreddit/user posts request successful
+2025-05-08 09:15:21,261 - INFO - Sleeping for random time
+2025-05-08 09:15:21,261 - INFO - Successfully fetched subreddit posts for https://www.reddit.com/user/old_temperature4590/m/financebusiness
+2025-05-08 09:15:21,689 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khgstq/how_are_you_managing_tariffs_strategies_to/.json
+2025-05-08 09:15:21,690 - INFO - Extracting comments
+2025-05-08 09:15:21,690 - INFO - Successfully extracted comments
+2025-05-08 09:15:21,690 - INFO - Successfully scraped post: How are you managing tariffs? Strategies to mitigate impacts?
+2025-05-08 09:15:22,183 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khgdcv/how_do_cod_cash_payouts_work_for_small_sellers_in/.json
+2025-05-08 09:15:22,183 - INFO - Extracting comments
+2025-05-08 09:15:22,183 - INFO - Successfully extracted comments
+2025-05-08 09:15:22,183 - INFO - Successfully scraped post: How do COD cash payouts work for small sellers in India? Can local couriers handle them?
+2025-05-08 09:15:22,635 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khgcv4/strategy_for_finding_for_retail_partners/.json
+2025-05-08 09:15:22,635 - INFO - Extracting comments
+2025-05-08 09:15:22,635 - INFO - Successfully extracted comments
+2025-05-08 09:15:22,635 - INFO - Successfully scraped post: Strategy for Finding for Retail Partners?
+2025-05-08 09:15:23,086 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khgcj1/consumer_market_survey_advice/.json
+2025-05-08 09:15:23,086 - INFO - Extracting comments
+2025-05-08 09:15:23,086 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,086 - INFO - Successfully scraped post: Consumer market survey advice
+2025-05-08 09:15:23,673 - INFO - Post details request successful : https://www.reddit.com/r/smallbusiness/comments/1khga3t/anyone_else_get_killed_in_taxes/.json
+2025-05-08 09:15:23,674 - INFO - Extracting comments
+2025-05-08 09:15:23,675 - INFO - Extracting comments
+2025-05-08 09:15:23,675 - INFO - Extracting comments
+2025-05-08 09:15:23,675 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,675 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,675 - INFO - Extracting comments
+2025-05-08 09:15:23,675 - INFO - Extracting comments
+2025-05-08 09:15:23,675 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,675 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,675 - INFO - Extracting comments
+2025-05-08 09:15:23,675 - INFO - Extracting comments
+2025-05-08 09:15:23,675 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,675 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,675 - INFO - Extracting comments
+2025-05-08 09:15:23,675 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,676 - INFO - Successfully extracted comments
+2025-05-08 09:15:23,676 - INFO - Successfully scraped post: Anyone else get killed in taxes?
+2025-05-08 09:15:33,614 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-08 09:15:37,598 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2025-05-08 09:15:37,600 - INFO - AFC remote call 1 is done.
