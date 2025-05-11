@@ -1,11 +1,10 @@
 import os
 import time
-import io
 from datetime import datetime
 from gradio_client import Client, handle_file
 from PIL import Image  # We'll use Pillow for image conversion
 
-def process_image(image_path, scale_factor="2x", save_result=True, output_dir="processed_images", return_binary=False):
+def process_image(image_path, scale_factor="2x", save_result=True, output_dir="processed_images"):
     """
     Process an image with Face Real ESRGAN upscaling service using the official gradio_client API.
     
@@ -14,10 +13,9 @@ def process_image(image_path, scale_factor="2x", save_result=True, output_dir="p
         scale_factor: Scale factor for upscaling ("2x", "4x", or "8x") - default is "2x"
         save_result: Whether to save the processed image locally (default: True)
         output_dir: Directory to save the processed image (default: "processed_images")
-        return_binary: Whether to return the image as binary data (default: False)
         
     Returns:
-        Dictionary with processing results and either local file path or binary data
+        Dictionary with processing results and local file path
     """
     print(f"Processing image: {image_path} with scale factor: {scale_factor}")
     
@@ -54,22 +52,6 @@ def process_image(image_path, scale_factor="2x", save_result=True, output_dir="p
             # Always convert to PNG
             img = Image.open(source_path)
             
-            # If we need to return binary data
-            if return_binary:
-                # Convert to PNG in memory and return binary data
-                img_byte_arr = io.BytesIO()
-                img.save(img_byte_arr, format='PNG')
-                binary_data = img_byte_arr.getvalue()
-                
-                print(f"Returning PNG as binary data ({len(binary_data)} bytes)")
-                
-                return {
-                    "status": "success",
-                    "result": result,
-                    "binary_data": binary_data,
-                    "format": "PNG"
-                }
-            
             # If we need to save the result locally
             if save_result:
                 # Create the output directory if it doesn't exist
@@ -98,7 +80,7 @@ def process_image(image_path, scale_factor="2x", save_result=True, output_dir="p
                     "local_path": dest_path
                 }
             
-            # If we're not saving but not returning binary either, just return success
+            # If we're not saving, just return success
             return {
                 "status": "success",
                 "result": result
@@ -122,8 +104,8 @@ def main():
     
     print("Processing image with Face Real ESRGAN...")
     
-    # Example 1: Save to file
-    process_result = process_image(image_path, scale_factor="2x", save_result=True, return_binary=False)
+    # Process and save to file
+    process_result = process_image(image_path, scale_factor="2x", save_result=True)
     
     if process_result.get("status") == "success":
         print("\nImage processing completed successfully!")
@@ -131,20 +113,7 @@ def main():
             print(f"Processed image saved to: {process_result.get('local_path')}")
     else:
         print(f"\nImage processing failed: {process_result}")
-    
-    # Example 2: Return binary data
-    print("\nProcessing image to get binary data...")
-    binary_result = process_image(image_path, scale_factor="2x", save_result=False, return_binary=True)
-    
-    if binary_result.get("status") == "success" and "binary_data" in binary_result:
-        print(f"Got binary data: {len(binary_result['binary_data'])} bytes")
-        # Example of how to use the binary data in another part of your code:
-        # binary_data = binary_result['binary_data']
-        # new_img = Image.open(io.BytesIO(binary_data))
-        # new_img.show()
-    else:
-        print(f"Failed to get binary data: {binary_result}")
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

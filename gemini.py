@@ -543,9 +543,10 @@ class GeminiClient:
         }
         
         return mime_types.get(file_ext, 'application/octet-stream')
+    
     def generate_text_with_web_search(self, 
-                                prompt: str, 
-                                model: str = "gemini-2.0-flash") -> str:
+                            prompt: str, 
+                            model: str = "gemini-2.0-flash") -> str:
         """
         Generate text using Gemini models with web search enabled
         
@@ -557,49 +558,15 @@ class GeminiClient:
             str: The generated text
         """
         try:
-            # Configure generation with web search enabled
-            generation_config = types.GenerationConfig(
-                temperature=0.2,  # Lower temperature for more factual responses
-                top_p=0.95,
-                top_k=40,
-                max_output_tokens=8192,  # Allow for longer responses
-                candidate_count=1
-            )
-            
-            # Safety settings to allow informational content
-            safety_settings = [
-                {
-                    "category": "HARM_CATEGORY_HARASSMENT",
-                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                },
-                {
-                    "category": "HARM_CATEGORY_HATE_SPEECH",
-                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                },
-                {
-                    "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                },
-                {
-                    "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                }
-            ]
-            
-            # Enable web search for up-to-date information
-            tools = [
-                {
-                    "web_search": {}
-                }
-            ]
-            
-            # Generate content with web search enabled
+            # Create a prompt that explicitly asks for web search
+            web_search_prompt = f"""Please use web search to provide the most up-to-date information available for the following question:
+        
+        {prompt}"""
+        
+            # Generate content with minimal parameters
             response = self.client.models.generate_content(
                 model=model,
-                contents=[prompt],
-                generation_config=generation_config,
-                safety_settings=safety_settings,
-                tools=tools
+                contents=[web_search_prompt]
             )
             
             # Process the response to remove any unwanted formatting

@@ -138,15 +138,25 @@ def generate_article_for_first_post():
             print("No unprocessed posts found in the sheet")
             return None, None
         
-        print(f"Generating article for post: '{first_post.get('title', '')}'")
+        # Validate that the post has a title and body
+        if not first_post.get('Title', '').strip():
+            print("Post has no title content")
+            return None, None
+            
+        if not first_post.get('Body', '').strip():
+            print("Post has no body content")
+            return None, None
+        print(f"Generating article for post: '{first_post.get('Title', '')}'")
+        
+        # print(f"Generating article for post: '{first_post.get('Title', '')}' with body length: {len(first_post.get('Body', ''))}")
         
         # Construct a prompt for Gemini that includes the question and instructions
         prompt = f"""
         Generate a comprehensive, detailed response to this finance/business question using the most current information available.
         
-        QUESTION TITLE: {first_post.get('title', '')}
+        QUESTION TITLE: {first_post.get('Title', '')}
         
-        QUESTION DETAILS: {first_post.get('body', '')}
+        QUESTION DETAILS: {first_post.get('Body', '')}
         
         IMPORTANT INSTRUCTIONS:
         1. Use the most up-to-date information available as of today
@@ -177,6 +187,282 @@ def generate_article_for_first_post():
         traceback.print_exc()
         return None, None
 
+def generate_image_for_article(post_data, article_content):
+    """
+    Generate an image for the article using a multi-stage process:
+    1. Generate image prompt using Puter API (Claude)
+    2. If that fails, use GitHub API (GPT-4o)
+    3. If that fails, use Gemini to generate the prompt
+    4. Generate image using Together API
+    5. If that fails, use Gemini for image generation
+    6. Upload image to Google Drive and get public URL
+    7. Delete local image file after upload
+    
+    Args:
+        post_data (dict): The post data from Google Sheets
+        article_content (str): The generated article content
+        
+    Returns:
+        dict: Image generation result with image data, prompt, alt tag, and public URL
+    """
+    try:
+        print("Starting image generation process...")
+        
+        # Create a single prompt message that will be used for all API attempts
+        claude_messages = [
+            {"role": "user", "content": f"""
+            Based on the following article about a finance/business question, create:
+            1. A detailed image prompt that would generate a relevant, professional illustration or visualization
+            2. A concise alt tag (25-40 words) that describes the image for accessibility purposes
+            
+            The image should be suitable for a business blog and should visually represent the key concepts 
+            in the article. Make the prompt detailed and specific, focusing on creating a professional-looking 
+            image that enhances the article's content.
+            
+            ARTICLE TITLE: {post_data.get('Title', '')}
+            
+            ARTICLE CONTENT: {article_content}
+            
+            Provide your response in JSON format with two fields:
+            {{
+                "image_prompt": "your detailed image generation prompt here",
+                "alt_tag": "your concise alt tag description here"
+            }}
+            
+            Include ONLY the JSON with no additional text or explanations.
+            For the image_prompt, include this negative prompt: (blurry, low-resolution, pixelated textures, compression artifacts, watermark, text, logo, poor anatomy, extra limbs, fused body parts, misplaced facial features, disproportionate body, stiff or awkward pose, unnatural joint angles, distorted hands or faces, bad composition, flat lighting, overexposed or underexposed areas, washed-out colors, overly saturated tones, muddy shadows, plastic or waxy textures, cartoonish style (unless specified), simplistic or childish look, symmetry glitches, duplicated limbs or faces, noisy background, pattern repetition, incorrect perspective, unrealistic materials, unfinished render, amateurish style)
+            """}
+        ]
+        
+        # Step 1: Generate image prompt and alt tag using Puter API
+        print("Generating image prompt and alt tag using Puter API...")
+        from puter_api import ChatCompletion
+        import json
+        
+        try:
+            # Try using Claude via Puter API
+            claude_response = ChatCompletion.create(
+                messages=claude_messages
+            )
+            # The updated ChatCompletion.create() will handle model selection and API key rotation
+            
+            # Handle the response based on whether it's a success or error
+            if isinstance(claude_response, dict) and "error" in claude_response:
+                # If we got an error response, raise an exception to trigger the GitHub fallback
+                raise Exception(f"Error from ChatCompletion: {claude_response['error']}")
+            
+            # Parse the response - the format depends on whether Claude or GPT-4o was used
+            if isinstance(claude_response, str):
+                # Direct text response from Claude
+                response_text = claude_response
+            else:
+                # Response object from GPT-4o
+                response_text = claude_response['result']['message']['content']
+                
+            # Parse the JSON response
+            try:
+                image_data = json.loads(response_text)
+                image_prompt = image_data.get("image_prompt", "")
+                alt_tag = image_data.get("alt_tag", "")
+                print(f"Successfully generated image prompt using Puter API: {image_prompt[:100]}...")
+                print(f"Alt tag: {alt_tag}")
+            except json.JSONDecodeError:
+                # If JSON parsing fails, use the text as image prompt and generate a generic alt tag
+                image_prompt = response_text
+                alt_tag = f"Image related to {post_data.get('Title', '')}"  
+                print("Failed to parse JSON response from Puter API, using text as image prompt")
+                
+        except Exception as claude_error:
+            print(f"Error using Puter API for image prompt: {claude_error}")
+            
+            # Step 2: Fall back to GitHub API
+            print("Falling back to GitHub API for image prompt and alt tag generation...")
+            from github_api import GitHubCompletion
+            
+            try:
+                # Try using GitHub API with the same messages
+                github_response = GitHubCompletion.create(claude_messages)
+                
+                # Handle the response based on whether it's a success or error
+                if isinstance(github_response, dict) and "error" in github_response:
+                    # If we got an error response, raise an exception to trigger the Gemini fallback
+                    raise Exception(f"Error from GitHubCompletion: {github_response['error']}")
+                
+                # Parse the JSON response
+                try:
+                    # First attempt: direct JSON parsing
+                    try:
+                        image_data = json.loads(github_response)
+                        image_prompt = image_data.get("image_prompt", "")
+                        alt_tag = image_data.get("alt_tag", "")
+                    except json.JSONDecodeError:
+                        # Second attempt: Try to extract JSON from text (in case there's additional text)
+                        import re
+                        json_match = re.search(r'\{[\s\S]*\}', github_response)
+                        if json_match:
+                            try:
+                                json_str = json_match.group(0)
+                                image_data = json.loads(json_str)
+                                image_prompt = image_data.get("image_prompt", "")
+                                alt_tag = image_data.get("alt_tag", "")
+                            except json.JSONDecodeError:
+                                raise  # Re-raise to be caught by outer exception handler
+                        else:
+                            raise json.JSONDecodeError("No JSON object found in response", github_response, 0)
+                    
+                    # Validate that we have meaningful content
+                    if not image_prompt.strip():
+                        raise ValueError("Empty image prompt in parsed JSON")
+                        
+                    print(f"Successfully generated image prompt using GitHub API: {image_prompt[:100]}...")
+                    print(f"Alt tag: {alt_tag}")
+                except (json.JSONDecodeError, ValueError) as json_error:
+                    # If JSON parsing fails, use the text as image prompt and generate a generic alt tag
+                    print(f"Failed to parse JSON response from GitHub API: {json_error}")
+                    image_prompt = github_response
+                    alt_tag = f"Image related to {post_data.get('Title', '')}"  
+                    print("Using text as image prompt instead")
+                    
+            except Exception as github_error:
+                print(f"Error using GitHub API for image prompt: {github_error}")
+                
+                # Step 3: Fall back to Gemini for image prompt and alt tag
+                print("Falling back to Gemini for image prompt and alt tag generation...")
+                
+                # Use Gemini to generate the image prompt and alt tag with the same prompt content
+                gemini_prompt = claude_messages[0]["content"]
+                gemini_response = gemini_client.generate_text(gemini_prompt)
+                
+                # Parse the JSON response
+                try:
+                    # First attempt: direct JSON parsing
+                    try:
+                        image_data = json.loads(gemini_response)
+                        image_prompt = image_data.get("image_prompt", "")
+                        alt_tag = image_data.get("alt_tag", "")
+                    except json.JSONDecodeError:
+                        # Second attempt: Try to extract JSON from text (in case there's additional text)
+                        import re
+                        json_match = re.search(r'\{[\s\S]*\}', gemini_response)
+                        if json_match:
+                            try:
+                                json_str = json_match.group(0)
+                                image_data = json.loads(json_str)
+                                image_prompt = image_data.get("image_prompt", "")
+                                alt_tag = image_data.get("alt_tag", "")
+                            except json.JSONDecodeError:
+                                raise  # Re-raise to be caught by outer exception handler
+                        else:
+                            raise json.JSONDecodeError("No JSON object found in response", gemini_response, 0)
+                    
+                    # Validate that we have meaningful content
+                    if not image_prompt.strip():
+                        raise ValueError("Empty image prompt in parsed JSON")
+                        
+                    print(f"Successfully generated image prompt using Gemini: {image_prompt[:100]}...")
+                    print(f"Alt tag: {alt_tag}")
+                except (json.JSONDecodeError, ValueError) as json_error:
+                    # If JSON parsing fails, use the text as image prompt and generate a generic alt tag
+                    print(f"Failed to parse JSON response from Gemini: {json_error}")
+                    image_prompt = gemini_response
+                    alt_tag = f"Image related to {post_data.get('Title', '')}"  
+                    print("Using text as image prompt instead")
+        
+        # Step 4: Generate the image using Together API via ImageGeneration class
+        # print("Generating image using Together API...")
+        # from image_generation import ImageGeneration
+        # image_generator = ImageGeneration()
+        
+        # # Generate a filename based on the post title
+        # import re
+        # safe_title = re.sub(r'[^\w\s-]', '', post_data.get('Title', 'article_image')).strip().replace(' ', '_')
+        # image_path = f"{safe_title}_image.png"
+        
+        # try:
+        #     # Try using Together API for image generation
+        #     image_result = image_generator.generate_image(
+        #         prompt=image_prompt,
+        #         width=1280,
+        #         height=720,
+        #         steps=4,
+        #         n=1,
+        #         save_path=image_path
+        #     )
+            
+        #     print(f"Successfully generated image using Together API: {image_path}")
+            
+        #     # Step 5: Upscale the generated image using upload_image.py
+        #     print("Upscaling the generated image...")
+        #     from upload_image import process_image
+            
+        #     # Process the image with 2x upscaling
+        #     upscale_result = process_image(
+        #         image_path=image_path,
+        #         scale_factor="2x",
+        #         save_result=True,
+        #         output_dir="processed_images"
+        #     )
+            
+        #     if upscale_result.get("status") == "success" and upscale_result.get("local_path"):
+        #         upscaled_image_path = upscale_result.get("local_path")
+        #         print(f"Successfully upscaled image: {upscaled_image_path}")
+        #     else:
+        #         print(f"Upscaling failed, using original image: {image_path}")
+        #         upscaled_image_path = image_path
+            
+        # except Exception as together_error:
+        #     print(f"Error using Together API for image generation: {together_error}")
+            
+        #     # Step 6: Fall back to Gemini for image generation (if implemented)
+        #     print("Falling back to Gemini for image generation...")
+        #     # Note: This would require implementing Gemini image generation
+        #     # For now, we'll raise an error
+        #     raise Exception("Together API failed and Gemini image generation is not implemented")
+        
+        # # Step 7: Upload the upscaled image to Google Drive and get public URL
+        # print("Uploading upscaled image to Google Drive...")
+
+        # try:
+        #     from google_drive_utils import GoogleDriveClient
+            
+        #     drive_client = GoogleDriveClient()
+            
+        #     # Upload the upscaled image to Google Drive
+        #     file_metadata = drive_client.upload_image(
+        #         image_path=upscaled_image_path,
+        #         folder_id=api_keys.GOOGLE_DRIVE_FOLDER_ID
+        #     )
+            
+        #     # Get the public URL
+        #     public_url = file_metadata.get('webContentLink') or file_metadata.get('webViewLink')
+        #     print(f"Upscaled image uploaded to Google Drive: {public_url}")
+            
+        #     # Step 8: Delete both the original and upscaled image files after successful upload
+        #     if os.path.exists(image_path):
+        #         os.remove(image_path)
+        #         print(f"Deleted original image file: {image_path}")
+                
+        #     if os.path.exists(upscaled_image_path) and upscaled_image_path != image_path:
+        #         os.remove(upscaled_image_path)
+        #         print(f"Deleted upscaled image file: {upscaled_image_path}")
+            
+        #     return {
+        #         "success": True,
+        #         "image_prompt": image_prompt,
+        #         "alt_tag": alt_tag,
+        #         "public_url": public_url,
+        #         "file_id": file_metadata.get('id')
+        #     }
+        # except Exception as e:
+        #     print(f"Error in saving image in google drive {e}")
+    
+                
+    except Exception as e:
+        print(f"Error in image generation process: {e}")
+        import traceback
+        traceback.print_exc()
+        return {"success": False, "error": str(e)}
+
 # Function to run the async scraper
 def run_async_scraper(subreddit_name, category="new", limit=5, filter=None):
     start_time = time.time()
@@ -206,25 +492,15 @@ if __name__ == "__main__":
     
     if post_data and article_content:
         print("Article generation successful!")
-        print(f"Post title: {post_data.get('title', '')}")
+        print(f"Post title: {post_data.get('Title', '')}")
         print(f"Article preview: {article_content[:200]}...")
+
+        # Generate an image for the article
+        image_result = generate_image_for_article(post_data, article_content)
         
-        # Here you can add additional processing steps for the article
-        # For example:
-        # 1. Format the article
-        # 2. Add images
-        # 3. Add SEO metadata
-        # 4. Generate social media snippets
-        # 5. etc.
-        
-        # When ready to save (commented out for now):
-        # if sheets_client.mark_post_as_done(
-        #     post_title=post_data.get('title', ''),
-        #     article_content=article_content,
-        #     status="Completed"
-        # ):
-        #     print(f"Successfully saved article for: '{post_data.get('title', '')}'")
-        # else:
-        #     print(f"Failed to save article to sheet")
-    else:
-        print("No article was generated")
+        if image_result.get("success", True):
+            print(f"Image generation successful! Saved to: {image_result.get('image_path')}")
+        else:
+            print(f"Image generation failed: {image_result.get('error', 'Unknown error')}")
+    # else:
+    #     print("No article was generated")

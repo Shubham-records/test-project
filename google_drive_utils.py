@@ -4,7 +4,7 @@ from googleapiclient.http import MediaFileUpload
 import os
 import mimetypes
 from typing import List, Dict, Any, Optional, Tuple
-
+import api_keys
 
 class GoogleDriveClient:
     """
@@ -12,15 +12,15 @@ class GoogleDriveClient:
     and retrieving their shareable links.
     """
     
-    def __init__(self, credentials_path: str, scopes: List[str] = None):
-        if scopes is None:
-            scopes = [
+    def __init__(self):
+        scopes = [
                 'https://www.googleapis.com/auth/drive',
                 'https://www.googleapis.com/auth/drive.file'
             ]
             
-        self.credentials = Credentials.from_service_account_file(
-            credentials_path, scopes=scopes
+        # Use from_service_account_info instead of from_service_account_file
+        self.credentials = Credentials.from_service_account_info(
+            api_keys.GOOGLE_CLOUD_API_CREDENTIALS, scopes=scopes
         )
         self.service = build('drive', 'v3', credentials=self.credentials)
     

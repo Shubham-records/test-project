@@ -23,7 +23,7 @@ class GoogleSheetsClient:
             
             # Use credentials directly from api_keys.py
             self._credentials = Credentials.from_service_account_info(
-                api_keys.GOOGLE_SHEET_CREDENTIALS, 
+                api_keys.GOOGLE_CLOUD_API_CREDENTIALS, 
                 scopes=scopes
             )
             self._client = gspread.authorize(self._credentials)
@@ -378,17 +378,28 @@ class GoogleSheetsClient:
             values = sheet.get_all_values()
             
             if len(values) <= 1:  # Only header row or empty
+                print("Sheet is empty or only contains headers")
                 return None
             
             # Get the header row
             headers = values[0]
+            print(f"Headers found: {headers}")
             
             # Find the index of the "Status" column
             status_index = -1
+            title_index = -1
+            body_index = -1
+            
             for i, header in enumerate(headers):
-                if header.lower() == "status":
+                header_lower = header.lower()
+                if header_lower == "status":
                     status_index = i
-                    break
+                elif header_lower == "title":
+                    title_index = i
+                elif header_lower == "body":
+                    body_index = i
+            
+            print(f"Title index: {title_index}, Body index: {body_index}, Status index: {status_index}")
             
             # If no Status column found, assume the first row is unprocessed
             if status_index == -1:
@@ -402,8 +413,20 @@ class GoogleSheetsClient:
                         break
             
             if not first_row:
+                print("No unprocessed posts found")
                 return None
-                
+            
+            # Validate that the post has a title and body
+            if (title_index == -1 or title_index >= len(first_row) or not first_row[title_index].strip()):
+                print(f"Found a post but it has no title content")
+                if title_index != -1 and title_index < len(first_row):
+                    print(f"Title content: '{first_row[title_index]}'")
+            
+            if (body_index == -1 or body_index >= len(first_row) or not first_row[body_index].strip()):
+                print(f"Found a post but it has no body content")
+                if body_index != -1 and body_index < len(first_row):
+                    print(f"Body content: '{first_row[body_index]}'")
+                    
             # Convert to dictionary
             post_data = {}
             for i, header in enumerate(headers):
@@ -412,10 +435,13 @@ class GoogleSheetsClient:
                 else:
                     post_data[header] = ""
                     
+            print(f"Post data: {post_data}")
             return post_data
-            
+                
         except Exception as e:
             print(f"Error getting first unprocessed post: {e}")
+            import traceback
+            traceback.print_exc()
             return None
 
     def mark_post_as_done(self, post_title, article_content, status="Completed"):
