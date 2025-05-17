@@ -1,0 +1,869 @@
+import os
+import sys
+import asyncio
+import time
+import api_keys
+import json
+import uuid
+import tempfile
+import api_keys
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+# Set up path for importing YARS
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir)
+src_path = os.path.join(project_root, "src")
+sys.path.append(src_path)
+
+from yars.yars import YARS
+from google_sheets_utils import GoogleSheetsClient
+from gemini import GeminiClient
+
+# Initialize the YARS Reddit miner
+miner = YARS()
+
+# Initialize the Google Sheets client
+sheets_client = GoogleSheetsClient()
+
+# Initialize the Gemini client
+gemini_client = GeminiClient()
+
+# Main async function to scrape subreddit data
+async def scrape_subreddit_data_async(subreddit_name, category, limit=5, filter=None):
+    try:
+        # Check if we already have 50 or more rows in the sheet
+        row_count = sheets_client.get_row_count(api_keys.GOOGLE_SHEET_NAMES["REDDIT_DATA"])
+        if row_count >= 50:
+            print(f"Sheet already has {row_count} rows, skipping Reddit scraping")
+            return
+        
+        print(f"Sheet has {row_count} rows, proceeding with Reddit scraping")
+        
+        # Fetch posts from Reddit
+        subreddit_posts = miner.fetch_subreddit_posts(subreddit_name, category, limit=limit, time_filter="all", filter=filter)
+        
+        # Create tasks for processing each post
+        tasks = []
+        for i, post in enumerate(subreddit_posts, 1):
+            print(f"Creating task for post {i}")
+            tasks.append(sheets_client.process_post(post, miner))
+        
+        # Wait for all tasks to complete
+        results = await asyncio.gather(*tasks)
+        
+        # Filter out None results and duplicates
+        non_duplicate_posts = []
+        for post_data in results:
+            if post_data and not sheets_client.is_duplicate_post(post_data.get("title", ""), post_data.get("author", "")):
+                non_duplicate_posts.append(post_data)
+            elif post_data:
+                print(f"Skipping duplicate post: '{post_data.get('title', '')}'")
+        
+        if not non_duplicate_posts:
+            print("No new posts to process after filtering duplicates")
+            return
+            
+        # Create a temporary Python file with all non-duplicate posts
+        temp_file_path = create_temp_python_file(non_duplicate_posts)
+        
+        try:
+            # Analyze all posts with a single Gemini API call, passing the temp file path
+            analysis_results = gemini_client.analyze_reddit_posts_batch(temp_file_path)
+            print(analysis_results)
+            
+            # Process the analysis results and add to Google Sheets
+            successful_posts = 0
+            for i, post_data in enumerate(non_duplicate_posts):
+                if i < len(analysis_results):
+                    analysis_result = analysis_results[i]
+                    post_data["analysis"] = analysis_result
+                    
+                    # Only add to sheet if the post should be processed
+                    if analysis_result.get("should_process", False):
+                        if sheets_client.add_to_sheet(post_data, api_keys.GOOGLE_SHEET_NAMES["REDDIT_DATA"], skip_duplicate_check=True):
+                            successful_posts += 1
+                            print(f"Added post: '{post_data.get('title', '')}' (Quality: {analysis_result.get('quality_rating', 0)})")
+                    else:
+                        print(f"Skipping post: '{post_data.get('title', '')}' - Not a relevant finance/business question")
+            
+            print(f"Successfully added {successful_posts} posts to Google Sheets")
+        finally:
+            # Clean up the temporary file
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
+                print(f"Removed temporary file: {temp_file_path}")
+        
+    except Exception as e:
+        print(f"Error occurred while scraping subreddit: {e}")
+        import traceback
+        traceback.print_exc()
+
+def create_temp_python_file(post_data_list):
+    """
+    Create a temporary Python file with a random name containing the post data
+    
+    Args:
+        post_data_list (list): List of post data to save
+        
+    Returns:
+        str: Path to the created temporary file
+    """
+    # Generate a random filename
+    random_filename = f"temp_posts_{uuid.uuid4().hex}.py"
+    file_path = os.path.join(tempfile.gettempdir(), random_filename)
+    
+    # Format the post data as a Python variable
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write("# Temporary file containing Reddit post data\n\n")
+        f.write("# This file is automatically generated and will be deleted after processing\n\n")
+        f.write("# Post data in Python format\n")
+        f.write("reddit_posts = ")
+        f.write(repr(post_data_list))
+        f.write("\n")
+    
+    print(f"Created temporary Python file with {len(post_data_list)} posts: {file_path}")
+    return file_path
+
+def generate_article_for_first_post():
+    
+    try:
+        # Get the first row from the sheet (excluding headers)
+        first_post = sheets_client.get_first_unprocessed_post(api_keys.GOOGLE_SHEET_NAMES["REDDIT_DATA"])
+        
+        if not first_post:
+            print("No unprocessed posts found in the sheet")
+            return None, None
+        
+        # Validate that the post has a title and body
+        if not first_post.get('Title', '').strip():
+            print("Post has no title content")
+            return None, None
+            
+        if not first_post.get('Body', '').strip():
+            print("Post has no body content")
+            return None, None
+        print(f"Generating article for post: '{first_post.get('Title', '')}'")
+        
+        # Construct a prompt for Gemini that includes the question and instructions
+        prompt = f"""
+        Generate a comprehensive, detailed response to this finance/business question 
+        using the most current information available.
+        
+        QUESTION TITLE: {first_post.get('Title', '')}
+        QUESTION DETAILS: {first_post.get('Body', '')}
+        
+        IMPORTANT INSTRUCTIONS:
+        1. Use the most up-to-date information available as of today
+        2. Provide factual, accurate information with specific details
+        3. Include relevant statistics, examples, and expert opinions when applicable
+        4. Structure the response in a clear, organized manner with appropriate headings
+        5. Do NOT include any introduction or conclusion sections
+        6. Start directly with the main content
+        7. Focus on providing practical, actionable advice when appropriate
+        8. Cite specific sources or references when possible
+        
+        Your response should be thorough and comprehensive, addressing all aspects of the question.
+        """
+        # Generate the article using Gemini with web search enabled
+        article_content = gemini_client.generate_text_with_web_search(prompt)
+        if not article_content:
+            print("Failed to generate article content")
+            return None, None
+        return first_post, article_content
+            
+    except Exception as e:
+        print(f"Error generating article: {e}")
+        import traceback
+        traceback.print_exc()
+        return None, None
+
+def generate_image_for_article(post_data, article_content):
+    """
+    Generate an image for the article using a multi-stage process:
+    1. Generate image prompt using Puter API (Claude)
+    2. If that fails, use GitHub API (GPT-4o)
+    3. If that fails, use Gemini to generate the prompt
+    4. Generate image using Together API
+    5. If that fails, use Gemini for image generation
+    6. Convert image to base64 for direct embedding in blog content
+    7. Delete local image file after conversion
+    
+    Args:
+        post_data (dict): The post data from Google Sheets
+        article_content (str): The generated article content
+        
+    Returns:
+        dict: Image generation result with image data, prompt, alt tag, and base64 encoded image
+    """
+    try:
+        print("Starting image generation process...")
+        
+        # Create a single prompt message that will be used for all API attempts
+        claude_messages = [
+            {"role": "user", "content": f"""
+            Based on the following article about a finance/business question, create:
+            1. A detailed image prompt that would generate a relevant, professional illustration or visualization
+            2. A concise alt tag (25-40 words) that describes the image for accessibility purposes
+            
+            The image should be suitable for a business blog and should visually represent the key concepts 
+            in the article. Make the prompt detailed and specific, focusing on creating a professional-looking 
+            image that enhances the article's content.
+            
+            ARTICLE TITLE: {post_data.get('Title', '')}
+            
+            ARTICLE CONTENT: {article_content}
+            
+            Provide your response in JSON format with two fields:
+            {{
+                "image_prompt": "your detailed image generation prompt here",
+                "alt_tag": "your concise alt tag description here"
+            }}
+            
+            Include ONLY the JSON with no additional text or explanations.
+            For the image_prompt, include this negative prompt: (blurry, low-resolution, pixelated textures, compression artifacts, watermark, text, logo, poor anatomy, extra limbs, fused body parts, misplaced facial features, disproportionate body, stiff or awkward pose, unnatural joint angles, distorted hands or faces, bad composition, flat lighting, overexposed or underexposed areas, washed-out colors, overly saturated tones, muddy shadows, plastic or waxy textures, cartoonish style (unless specified), simplistic or childish look, symmetry glitches, duplicated limbs or faces, noisy background, pattern repetition, incorrect perspective, unrealistic materials, unfinished render, amateurish style)
+            """}
+        ]
+        
+        # Step 1: Generate image prompt and alt tag using Puter API
+        print("Generating image prompt and alt tag using Puter API...")
+        from puter_api import ChatCompletion
+        import json
+        
+        try:
+            # Try using Claude via Puter API
+            claude_response = ChatCompletion.create(
+                messages=claude_messages
+            )
+            # The updated ChatCompletion.create() will handle model selection and API key rotation
+            
+            # Handle the response based on whether it's a success or error
+            if isinstance(claude_response, dict) and "error" in claude_response:
+                # If we got an error response, raise an exception to trigger the GitHub fallback
+                raise Exception(f"Error from ChatCompletion: {claude_response['error']}")
+            
+            # Parse the response - the format depends on whether Claude or GPT-4o was used
+            if isinstance(claude_response, str):
+                # Direct text response from Claude
+                response_text = claude_response
+            else:
+                # Response object from GPT-4o
+                response_text = claude_response['result']['message']['content']
+                
+            # Parse the JSON response
+            try:
+                image_data = json.loads(response_text)
+                image_prompt = image_data.get("image_prompt", "")
+                alt_tag = image_data.get("alt_tag", "")
+                print(f"Successfully generated image prompt using Puter API: {image_prompt[:100]}...")
+                print(f"Alt tag: {alt_tag}")
+            except json.JSONDecodeError:
+                # If JSON parsing fails, use the text as image prompt and generate a generic alt tag
+                image_prompt = response_text
+                alt_tag = f"Image related to {post_data.get('Title', '')}"  
+                print("Failed to parse JSON response from Puter API, using text as image prompt")
+                
+        except Exception as claude_error:
+            print(f"Error using Puter API for image prompt: {claude_error}")
+            
+            # Step 2: Fall back to GitHub API
+            print("Falling back to GitHub API for image prompt and alt tag generation...")
+            from github_api import GitHubCompletion
+            
+            try:
+                # Try using GitHub API with the same messages
+                github_response = GitHubCompletion.create(claude_messages)
+                
+                # Handle the response based on whether it's a success or error
+                if isinstance(github_response, dict) and "error" in github_response:
+                    # If we got an error response, raise an exception to trigger the Gemini fallback
+                    raise Exception(f"Error from GitHubCompletion: {github_response['error']}")
+                
+                # Parse the JSON response
+                try:
+                    # First attempt: direct JSON parsing
+                    try:
+                        image_data = json.loads(github_response)
+                        image_prompt = image_data.get("image_prompt", "")
+                        alt_tag = image_data.get("alt_tag", "")
+                    except json.JSONDecodeError:
+                        # Second attempt: Try to extract JSON from text (in case there's additional text)
+                        import re
+                        json_match = re.search(r'\{[\s\S]*\}', github_response)
+                        if json_match:
+                            try:
+                                json_str = json_match.group(0)
+                                image_data = json.loads(json_str)
+                                image_prompt = image_data.get("image_prompt", "")
+                                alt_tag = image_data.get("alt_tag", "")
+                            except json.JSONDecodeError:
+                                raise  # Re-raise to be caught by outer exception handler
+                        else:
+                            raise json.JSONDecodeError("No JSON object found in response", github_response, 0)
+                    
+                    # Validate that we have meaningful content
+                    if not image_prompt.strip():
+                        raise ValueError("Empty image prompt in parsed JSON")
+                        
+                    print(f"Successfully generated image prompt using GitHub API: {image_prompt[:100]}...")
+                    print(f"Alt tag: {alt_tag}")
+                except (json.JSONDecodeError, ValueError) as json_error:
+                    # If JSON parsing fails, use the text as image prompt and generate a generic alt tag
+                    print(f"Failed to parse JSON response from GitHub API: {json_error}")
+                    image_prompt = github_response
+                    alt_tag = f"Image related to {post_data.get('Title', '')}"  
+                    print("Using text as image prompt instead")
+                    
+            except Exception as github_error:
+                print(f"Error using GitHub API for image prompt: {github_error}")
+                
+                # Step 3: Fall back to Gemini for image prompt and alt tag
+                print("Falling back to Gemini for image prompt and alt tag generation...")
+                
+                # Use Gemini to generate the image prompt and alt tag with the same prompt content
+                gemini_prompt = claude_messages[0]["content"]
+                gemini_response = gemini_client.generate_text_with_web_search(gemini_prompt)
+                
+                try:
+                    # First attempt: direct JSON parsing
+                    try:
+                        blog_data = json.loads(gemini_response)
+                    except json.JSONDecodeError:
+                        # Second attempt: Try to extract JSON from text (in case there's additional text)
+                        import re
+                        json_match = re.search(r'\{[\s\S]*\}', gemini_response)
+                        if json_match:
+                            try:
+                                json_str = json_match.group(0)
+                                blog_data = json.loads(json_str)
+                            except json.JSONDecodeError:
+                                raise  # Re-raise to be caught by outer exception handler
+                        else:
+                            # Third attempt: If no JSON found, create a structured response from the text
+                            print("No JSON found in Gemini response, creating structured format from text")
+                            # Create a basic structure with the text content
+                            blog_data = {
+                                "title": post_data.get('Title', ''),
+                                "content": f"<p>{gemini_response}</p>",
+                                "description": gemini_response[:150] + "...",
+                                "categories": [post_data.get('LinkFlairText', 'General')],
+                                "keywords": [post_data.get('LinkFlairText', 'General')]
+                            }
+                        
+                        print("Successfully formatted blog content using Gemini")
+                        return blog_data
+                        
+                    except Exception as json_error:
+                        print(f"Error parsing Gemini response: {json_error}")
+                        # Create a fallback response structure
+                        fallback_data = {
+                            "title": post_data.get('Title', ''),
+                            "content": f"<p>{article_content}</p>",
+                            "description": article_content[:150] + "...",
+                            "categories": [post_data.get('LinkFlairText', 'General')],
+                            "keywords": [post_data.get('LinkFlairText', 'General')]
+                        }
+                        print("Using fallback blog content structure")
+                        return fallback_data
+                except (json.JSONDecodeError, ValueError) as json_error:
+                    # If JSON parsing fails, use the text as image prompt and generate a generic alt tag
+                    print(f"Failed to parse JSON response from Gemini: {json_error}")
+                    image_prompt = gemini_response
+                    alt_tag = f"Image related to {post_data.get('Title', '')}"  
+                    print("Using text as image prompt instead")
+        
+        # Step 4: Generate the image using Together API via ImageGeneration class
+        print("Generating image using Together API...")
+        from image_generation import ImageGeneration
+        image_generator = ImageGeneration()
+        
+        # Generate a filename based on the post title
+        import re
+        safe_title = re.sub(r'[^\w\s-]', '', post_data.get('Title', 'article_image')).strip().replace(' ', '_')
+        image_path = f"{safe_title}_image.png"
+        
+        try:
+            # Try using Together API for image generation
+            image_result = image_generator.generate_image(
+                prompt=image_prompt,
+                width=1280,
+                height=720,
+                steps=4,
+                n=1,
+                save_path=image_path
+            )
+            print(f"Successfully generated image using Together API: {image_path}")
+            print("Upscaling the generated image...")
+            from upload_image import process_image
+            upscale_result = process_image(
+                image_path=image_path,
+                scale_factor="2x",
+                save_result=True,
+                output_dir="processed_images"
+            )
+            if upscale_result.get("status") == "success" and upscale_result.get("local_path"):
+                upscaled_image_path = upscale_result.get("local_path")
+                print(f"Successfully upscaled image: {upscaled_image_path}")
+            else:
+                print(f"Upscaling failed, using original image: {image_path}")
+                upscaled_image_path = image_path
+            
+        except Exception as together_error:
+            print(f"Error using Together API for image generation: {together_error}")
+            
+            # Step 6: Fall back to Gemini for image generation (if implemented)
+            print("Falling back to Gemini for image generation...")
+            # Note: This would require implementing Gemini image generation
+            # For now, we'll raise an error
+            raise Exception("Together API failed and Gemini image generation is not implemented")
+        
+        # Step 7: Convert the upscaled image to base64 for direct embedding in blog content
+        print("Uploading image to Google Drive and creating direct link...")
+        import re
+        
+        try:
+            # Uncomment and use the Google Drive upload code
+            from google_drive_utils import GoogleDriveClient
+            
+            drive_client = GoogleDriveClient()
+            
+            # Upload the upscaled image to Google Drive
+            file_metadata = drive_client.upload_image(
+                image_path=upscaled_image_path,
+                folder_id=api_keys.GOOGLE_DRIVE_FOLDER_ID
+            )
+            
+            # Get the file ID from the metadata
+            file_id = file_metadata.get('id')
+            
+            if not file_id:
+                raise Exception("Failed to get file ID from Google Drive upload")
+                
+            # Create the direct link using the lh3.googleusercontent.com format
+            direct_link = f"https://lh3.googleusercontent.com/d/{file_id}"
+            print(f"Created direct link: {direct_link}")
+            
+            # Create the HTML image tag with the direct link
+            image_tag = f"<img src='{direct_link}' alt='{alt_tag}'>"
+            
+            # Step 8: Delete both the original and upscaled image files after successful upload
+            if os.path.exists(image_path):
+                os.remove(image_path)
+                print(f"Deleted original image file: {image_path}")
+                
+            if os.path.exists(upscaled_image_path) and upscaled_image_path != image_path:
+                os.remove(upscaled_image_path)
+                print(f"Deleted upscaled image file: {upscaled_image_path}")
+            
+            return {
+                "success": True,
+                "image_prompt": image_prompt,
+                "alt_tag": alt_tag,
+                "image_path": direct_link,
+                "image_tag": image_tag
+            }
+        except Exception as e:
+            print(f"Error in uploading image to Google Drive: {e}")
+            raise
+                
+    except Exception as e:
+        print(f"Error in image generation process: {e}")
+        import traceback
+        traceback.print_exc()
+        return {"success": False, "error": str(e)}
+
+# Function to run the async scraper
+def run_async_scraper(subreddit_name, category="new", limit=5, filter=None):
+    start_time = time.time()
+    asyncio.run(scrape_subreddit_data_async(subreddit_name, category, limit, filter))
+    end_time = time.time()
+    print(f"Total execution time: {end_time - start_time:.2f} seconds")
+
+def format_blog_content(post_data, article_content, image_result):
+    """
+    Format the blog content using a multi-stage process:
+    1. Use Puter API (Claude/GPT-4o) to format and optimize content
+    2. If that fails, use GitHub API (GPT-4o)
+    3. If that fails, use Gemini as final fallback
+    
+    Args:
+        post_data (dict): The original post data
+        article_content (str): The generated article content
+        image_result (dict): The image generation result containing URL and alt tag
+        
+    Returns:
+        dict: Formatted blog content with title, HTML content, description, and categories
+    """
+    try:
+        print("Starting blog content formatting process...")
+        
+        # Create a single prompt message that will be used for all API attempts
+        format_messages = [
+            {"role": "user", "content": f"""
+            Transform the following article content into a professional finance/business blog post following these strict guidelines:
+            
+            Original Title: {post_data.get('Title', '')}
+            Article Content: {article_content}
+            
+            Required JSON Structure:
+            {{
+                "title": "SEO-optimized title (60-70 chars containing primary keyword)",
+                "content": "Full HTML body without head/body tags",
+                "description": "Meta description (150-160 chars with secondary keywords)",
+                "categories": ["Finance" or "Business"],
+                "keywords": ["list", "of", "semantic", "keywords"]
+            }}
+            Content Requirements:
+            Optimize for SEO with relevant keywords and meta description
+            IMPORTANT: Include a blank <img/> tag immediately after the title (h1 tag)
+            1. Maintain professional tone using active voice and financial terminology
+            2. Forbidden content: 
+            - Investment recommendations
+            - Loan/product comparisons
+            - Specific financial advice
+            3. Structural Elements:
+            - <h1>Title</h1><img/> 
+            - 3-5 <h2> sections with 2-3 <h3> subsections
+            - Paragraphs limited to 3 sentences max
+            - Complex concepts explained through business case examples[4]
+            4. SEO Optimization:
+            - Primary keyword in first 100 words
+            - 2-3 secondary keywords naturally integrated
+            - Schema markup for articles[2]
+            5. Editorial Standards:
+            - Convert statistics to data visualizations using <div class="chart">
+            - Use blockquotes for expert opinions
+            - Apply AP Style guidelines
+            - Flesch-Kincaid readability score >60
+            Output Rules:
+            - Return valid JSON without Markdown
+            - Escape special characters
+            - Ensure proper HTML tag nesting
+            - Exclude promotional CTAs[5]
+            Return ONLY the JSON response without any additional text.
+            """}
+        ]
+        
+        # Step 1: Try Puter API first
+        print("Formatting blog content using Puter API...")
+        from puter_api import ChatCompletion
+        import json
+        
+        try:
+            # Try using Claude via Puter API
+            puter_response = ChatCompletion.create(
+                messages=format_messages
+            )
+            
+            if isinstance(puter_response, dict) and "error" in puter_response:
+                raise Exception(f"Error from ChatCompletion: {puter_response['error']}")
+            
+            # Parse the response
+            response_text = puter_response if isinstance(puter_response, str) else puter_response['result']['message']['content']
+            
+            try:
+                blog_data = json.loads(response_text)
+                print("Successfully formatted blog content using Puter API")
+                return blog_data
+                
+            except json.JSONDecodeError:
+                raise Exception("Failed to parse JSON response from Puter API")
+                
+        except Exception as puter_error:
+            print(f"Error using Puter API for blog formatting: {puter_error}")
+            
+            # Step 2: Fall back to GitHub API
+            print("Falling back to GitHub API for blog formatting...")
+            from github_api import GitHubCompletion
+            
+            try:
+                github_response = GitHubCompletion.create(format_messages)
+                
+                if isinstance(github_response, dict) and "error" in github_response:
+                    raise Exception(f"Error from GitHubCompletion: {github_response['error']}")
+                
+                try:
+                    # First attempt: direct JSON parsing
+                    blog_data = json.loads(github_response)
+                except json.JSONDecodeError:
+                    # Second attempt: Try to extract JSON from text
+                    import re
+                    json_match = re.search(r'\{[\s\S]*\}', github_response)
+                    if json_match:
+                        blog_data = json.loads(json_match.group(0))
+                    else:
+                        raise
+                
+                print("Successfully formatted blog content using GitHub API")
+                return blog_data
+                
+            except Exception as github_error:
+                print(f"Error using GitHub API for blog formatting: {github_error}")
+                
+                # Step 3: Fall back to Gemini
+                print("Falling back to Gemini for blog formatting...")
+                from gemini import GeminiClient
+                
+                try:
+                    gemini_client = GeminiClient()
+                    gemini_prompt = format_messages[0]['content']
+                    
+                    gemini_response = gemini_client.generate_text_with_web_search(gemini_prompt)
+                    
+                    try:
+                        # First attempt: direct JSON parsing
+                        try:
+                            blog_data = json.loads(gemini_response)
+                        except json.JSONDecodeError:
+                            # Second attempt: Try to extract JSON from text (in case there's additional text)
+                            import re
+                            json_match = re.search(r'\{[\s\S]*\}', gemini_response)
+                            if json_match:
+                                try:
+                                    json_str = json_match.group(0)
+                                    blog_data = json.loads(json_str)
+                                except json.JSONDecodeError:
+                                    raise  # Re-raise to be caught by outer exception handler
+                            else:
+                                # Third attempt: If no JSON found, create a structured response from the text
+                                print("No JSON found in Gemini response, creating structured format from text")
+                                # Create a basic structure with the text content
+                                blog_data = {
+                                    "title": post_data.get('Title', ''),
+                                    "content": f"<p>{gemini_response}</p>",
+                                    "description": gemini_response[:150] + "...",
+                                    "categories": [post_data.get('LinkFlairText', 'General')],
+                                    "keywords": [post_data.get('LinkFlairText', 'General')]
+                                }
+                        
+                        print("Successfully formatted blog content using Gemini")
+                        return blog_data
+                        
+                    except Exception as json_error:
+                        print(f"Error parsing Gemini response: {json_error}")
+                        # Create a fallback response structure
+                        fallback_data = {
+                            "title": post_data.get('Title', ''),
+                            "content": f"<p>{article_content}</p>",
+                            "description": article_content[:150] + "...",
+                            "categories": [post_data.get('LinkFlairText', 'General')],
+                            "keywords": [post_data.get('LinkFlairText', 'General')]
+                        }
+                        print("Using fallback blog content structure")
+                        return fallback_data
+                except (json.JSONDecodeError, ValueError) as json_error:
+                    # If JSON parsing fails, use the text as image prompt and generate a generic alt tag
+                    print(f"Failed to parse JSON response from Gemini: {json_error}")
+                    image_prompt = gemini_response
+                    alt_tag = f"Image related to {post_data.get('Title', '')}"  
+                    print("Using text as image prompt instead")
+        
+        # Step 4: Generate the image using Together API via ImageGeneration class
+        print("Generating image using Together API...")
+        from image_generation import ImageGeneration
+        image_generator = ImageGeneration()
+        
+        # Generate a filename based on the post title
+        import re
+        safe_title = re.sub(r'[^\w\s-]', '', post_data.get('Title', 'article_image')).strip().replace(' ', '_')
+        image_path = f"{safe_title}_image.png"
+        
+        try:
+            # Try using Together API for image generation
+            image_result = image_generator.generate_image(
+                prompt=image_prompt,
+                width=1280,
+                height=720,
+                steps=4,
+                n=1,
+                save_path=image_path
+            )
+            
+            print(f"Successfully generated image using Together API: {image_path}")
+            
+            # Step 5: Upscale the generated image using upload_image.py
+            print("Upscaling the generated image...")
+            from upload_image import process_image
+            
+            # Process the image with 2x upscaling
+            upscale_result = process_image(
+                image_path=image_path,
+                scale_factor="2x",
+                save_result=True,
+                output_dir="processed_images"
+            )
+            
+            if upscale_result.get("status") == "success" and upscale_result.get("local_path"):
+                upscaled_image_path = upscale_result.get("local_path")
+                print(f"Successfully upscaled image: {upscaled_image_path}")
+            else:
+                print(f"Upscaling failed, using original image: {image_path}")
+                upscaled_image_path = image_path
+            
+        except Exception as together_error:
+            print(f"Error using Together API for image generation: {together_error}")
+            
+            # Step 6: Fall back to Gemini for image generation (if implemented)
+            print("Falling back to Gemini for image generation...")
+            # Note: This would require implementing Gemini image generation
+            # For now, we'll raise an error
+            raise Exception("Together API failed and Gemini image generation is not implemented")
+        
+        # Step 7: Convert the upscaled image to base64 for direct embedding in blog content
+        print("Converting image to base64...")
+        import base64
+        
+        try:
+            # Read the image file and convert to base64
+            with open(upscaled_image_path, "rb") as image_file:
+                encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+            
+            # Create the base64 image string with proper format
+            img_base64 = f"data:image/png;base64,{encoded_string}"
+            print("Successfully converted image to base64")
+            
+            # Create the HTML image tag
+            image_tag = f"<img src='{img_base64}' alt='{alt_tag}'>"
+            
+            # Comment out the Google Drive upload code
+            
+            # Step 7: Upload the upscaled image to Google Drive and get public URL
+            print("Uploading upscaled image to Google Drive...")
+
+            from google_drive_utils import GoogleDriveClient
+            
+            drive_client = GoogleDriveClient()
+            
+            # Upload the upscaled image to Google Drive
+            file_metadata = drive_client.upload_image(
+                image_path=upscaled_image_path,
+                folder_id=api_keys.GOOGLE_DRIVE_FOLDER_ID
+            )
+            
+            # Get the public URL
+            public_url = file_metadata.get('webContentLink') or file_metadata.get('webViewLink')
+            print(f"Upscaled image uploaded to Google Drive: {public_url}")
+            
+            # Step 8: Delete both the original and upscaled image files after successful upload
+            if os.path.exists(image_path):
+                os.remove(image_path)
+                print(f"Deleted original image file: {image_path}")
+                
+            if os.path.exists(upscaled_image_path) and upscaled_image_path != image_path:
+                os.remove(upscaled_image_path)
+                print(f"Deleted upscaled image file: {upscaled_image_path}")
+            
+            
+            return {
+                "success": True,
+                "image_prompt": image_prompt,
+                "alt_tag": alt_tag,
+                "image_base64": img_base64,
+                "image_tag": image_tag
+            }
+        except Exception as e:
+            print(f"Error in converting image to base64: {e}")
+            raise
+                
+    except Exception as e:
+        print(f"Error in image generation process: {e}")
+        import traceback
+        traceback.print_exc()
+        return {"success": False, "error": str(e)}
+
+def post_to_blogger(blog_content):
+    try:
+        print("Posting to Blogger...")
+        with open('token.json', 'r') as token_file:
+            creds_data = json.load(token_file)
+        scopes = ['https://www.googleapis.com/auth/blogger']
+
+        # Create the credentials object
+        creds = Credentials.from_authorized_user_info(info=creds_data, scopes=scopes)
+
+        # If expired and has refresh_token, refresh and save updated token
+        if creds.expired and creds.refresh_token:
+            print("Refreshing token...")
+            creds.refresh(Request())
+            with open('token.json', 'w') as token_file:
+                token_file.write(creds.to_json())
+        blogger_service = build('blogger', 'v3', credentials=creds)
+        post_body = {
+            'kind': 'blogger#post', 'title': blog_content.get('title'),
+            'content': blog_content.get('content'), 'labels': blog_content.get('categories', []),
+        }
+        request = blogger_service.posts().insert(blogId=api_keys.BLOG_ID, isDraft=False, body=post_body)
+        response = request.execute()
+        print(f"Successfully posted to Blogger: {response.get('url')}")
+        return {'success': True, 'url': response.get('url'), 'post_id': response.get('id')}
+
+    except Exception as e:
+        print(f"Error posting to Blogger: {e}")
+        import traceback
+        traceback.print_exc()
+        return {'success': False, 'error': str(e)}
+# Main execution
+if __name__ == "__main__":
+
+    # Subreddit to scrape
+    subreddit_name = "https://www.reddit.com/user/old_temperature4590/m/financebusiness"
+    
+    # Example of using filter
+    filter_flairs = ["Question", "Help"]
+    
+    # Run the async scraper
+    run_async_scraper(
+        subreddit_name=subreddit_name,
+        category="new",
+        limit=5,
+        filter=filter_flairs
+    )
+    
+    # After scraping is complete, generate an article for the first post
+    # but don't save it to the sheet yet
+    post_data, article_content = generate_article_for_first_post()
+    
+    if post_data and article_content:
+        print("Article generation successful!")
+        print(f"Post title: {post_data.get('Title', '')}")
+        print(f"Article preview: {article_content[:200]}...")
+
+        # Generate an image for the article
+        image_result = generate_image_for_article(post_data, article_content)
+        
+        if image_result.get("success", True):
+            print(f"Image generation successful! Saved to: {image_result.get('image_path')}")
+            
+            # Format blog content
+            blog_content = format_blog_content(post_data, article_content, image_result)
+            
+            if "error" not in blog_content:
+                print("Blog content formatting successful!")
+                print(f"Formatted title: {blog_content.get('title')}")
+                print(f"Categories: {', '.join(blog_content.get('categories', []))}")                
+                
+                # Replace the blank <img/> tag with the actual image tag
+                if 'content' in blog_content and image_result.get('image_tag'):
+                    blog_content['content'] = blog_content['content'].replace('<img/>', image_result.get('image_tag'))
+                    print("Successfully replaced placeholder with actual image tag")
+                
+                # Post to Blogger
+                post_result = post_to_blogger(blog_content)
+                
+                if post_result.get('success'):
+                    print(f"Successfully posted to Blogger: {post_result.get('url')}")
+                    # After successfully posting to Blogger
+                    if sheets_client.mark_post_as_done():
+                        print("Successfully moved post to done_article sheet")
+                    else:
+                        print("Failed to move post to done_article sheet")
+                else:
+                    print(f"Failed to post to Blogger: {post_result.get('error')}")
+            else:
+                print(f"Blog content formatting failed: {blog_content.get('error')}")
+        else:
+            print(f"Image generation failed: {image_result.get('error', 'Unknown error')}")
+            
+            
+
